@@ -1761,7 +1761,7 @@ map.on('click', function(e) {
 
         if (nearestHC) {
             const props = nearestHC.feature?.properties || {};
-            const hcName = props.Name || props.NAME || props.name || props['Health Cen'] || "Unknown Health Center";
+            const hcName = props['Health Cen'] || "Unknown Health Center";
             infoContent += `<b>Nearest Health Center:</b> ${hcName}<br><b>Distance:</b> ${(nearestDistHC / 1000).toFixed(2)} km`;
         } else {
             infoContent += "No health centers found.";
