@@ -55,19 +55,35 @@
                 margin-right: 8px;
                 opacity: 0.8;
             }
+            .leaflet-tooltip.my-tooltip {
+            background: rgba(34,34,34,0.95);
+            color: #fff;
+            border-radius: 6px;
+            padding: 6px 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+            font-family: "Inter", Roboto, Arial, sans-serif;
+            white-space: nowrap; /* change to normal if you want line wrap */
+            pointer-events: none; /* keep tooltip non-interactive */
+            }
             </style>
     </head>
     <style>
     /* Allow ALL interactive overlay layers to be clicked through */
-    .leaflet-interactive,
-    .leaflet-marker-icon,
-    .leaflet-overlay-pane path {
-        pointer-events: none !important;
-    }
+/* keep markers interactive */
+.leaflet-interactive,
+.leaflet-marker-icon {
+  pointer-events: auto !important;
+}
 
-    .leaflet-marker-icon {
-    pointer-events: auto !important;
-    }
+/* disable pointer events only for large polygon fills (so they don't block point hovers) */
+.leaflet-overlay-pane path:not([data-tooltip="true"]):not(.leaflet-clickable) {
+  pointer-events: none !important;
+}
+
+/* tooltips should not block mouse interaction */
+.leaflet-tooltip {
+  pointer-events: none;
+}
 
 
     /* IMPORTANT EXCEPTION: If you have a specific custom control or tool 
@@ -76,7 +92,7 @@
     </style>
 
     <body>
-        <div id="infoBox">Click anywhere on the map to find the nearest library, hospital, and health center.</div>
+        <div id="infoBox">Click anywhere on the map to find the nearest library, hospital, health center, and food access point.</div>
         <div id="map">
         </div>
         <script src="js/qgis2web_expressions.js"></script>
@@ -103,6 +119,7 @@
         <script src="data/OsmQuery_8.js"></script>
         <script src="data/Regions_2_6_Libraries_9.js"></script>
         <script src="data/Libraries_Clipped_10.js"></script>
+        <script src="data/foodfinder_locations_8.js"></script>
         <script>
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
@@ -387,11 +404,19 @@
             pane: 'pane_Hospitals_1',
             onEachFeature: pop_Hospitals_1,
             pointToLayers: [function (feature, latlng) {
-                var context = {
-                    feature: feature,
-                    variables: {}
-                };
-                return L.shapeMarker(latlng, style_Hospitals_1_0(feature));
+                var marker = L.shapeMarker(latlng, style_Hospitals_1_0(feature));
+                if (marker._path) {
+                marker._path.setAttribute("data-tooltip", "true");
+                }
+                // ✅ Add hover tooltip
+                marker.bindTooltip(feature.properties.LandmkName, {
+                permanent: false,
+                className: 'my-tooltip',
+                direction: "top",
+                opacity: 0.9
+                });
+                // Return unchanged
+                return marker;
             },function (feature, latlng) {
                 var context = {
                     feature: feature,
@@ -583,11 +608,19 @@
             pane: 'pane_Hospitals_Clipped_2',
             onEachFeature: pop_Hospitals_Clipped_2,
             pointToLayer: function (feature, latlng) {
-                var context = {
-                    feature: feature,
-                    variables: {}
-                };
-                return L.circleMarker(latlng, style_Hospitals_Clipped_2_0(feature));
+                var marker = L.shapeMarker(latlng, style_Hospitals_Clipped_2_0(feature));
+                if (marker._path) {
+                marker._path.setAttribute("data-tooltip", "true");
+                }
+                // ✅ Add hover tooltip
+                marker.bindTooltip(feature.properties.LandmkName, {
+                permanent: false,
+                className: 'my-tooltip',
+                direction: "top",
+                opacity: 0.9
+                });
+                // Return unchanged
+                return marker;
             },
         });
         bounds_group.addLayer(layer_Hospitals_Clipped_2);
@@ -671,7 +704,7 @@
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(255,158,23,0.0)',
-                interactive: true,
+                interactive: false,
             }
         }
         map.createPane('pane_union_3');
@@ -679,7 +712,7 @@
         map.getPane('pane_union_3').style['mix-blend-mode'] = 'normal';
         var layer_union_3 = new L.geoJson(json_union_3, {
             attribution: '',
-            interactive: true,
+            interactive: false,
             dataVar: 'json_union_3',
             layerName: 'layer_union_3',
             pane: 'pane_union_3',
@@ -767,7 +800,7 @@
         map.getPane('pane_filtered_countiescounties_4').style['mix-blend-mode'] = 'normal';
         var layer_filtered_countiescounties_4 = new L.geoJson(json_filtered_countiescounties_4, {
             attribution: '',
-            interactive: true,
+            interactive: false,
             dataVar: 'json_filtered_countiescounties_4',
             layerName: 'layer_filtered_countiescounties_4',
             pane: 'pane_filtered_countiescounties_4',
@@ -865,7 +898,7 @@
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(89,255,136,0.4)',
-                interactive: true,
+                interactive: false,
             }
             }
             if (feature.properties['poverty_va_tracts_S1702_C02_001E'] >= 5.100000 && feature.properties['poverty_va_tracts_S1702_C02_001E'] <= 7.920000 ) {
@@ -880,7 +913,7 @@
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(130,191,102,0.4)',
-                interactive: true,
+                interactive: false,
             }
             }
             if (feature.properties['poverty_va_tracts_S1702_C02_001E'] >= 7.920000 && feature.properties['poverty_va_tracts_S1702_C02_001E'] <= 8.780000 ) {
@@ -895,7 +928,7 @@
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(172,128,68,0.4)',
-                interactive: true,
+                interactive: false,
             }
             }
             if (feature.properties['poverty_va_tracts_S1702_C02_001E'] >= 8.780000 && feature.properties['poverty_va_tracts_S1702_C02_001E'] <= 11.940000 ) {
@@ -910,7 +943,7 @@
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(213,64,34,0.4)',
-                interactive: true,
+                interactive: false,
             }
             }
             if (feature.properties['poverty_va_tracts_S1702_C02_001E'] >= 11.940000 && feature.properties['poverty_va_tracts_S1702_C02_001E'] <= 22.700000 ) {
@@ -925,7 +958,7 @@
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(255,0,0,0.4)',
-                interactive: true,
+                interactive: false,
             }
             }
         }
@@ -934,7 +967,7 @@
         map.getPane('pane_CensusTractsbyFamilyPoverty_5').style['mix-blend-mode'] = 'normal';
         var layer_CensusTractsbyFamilyPoverty_5 = new L.geoJson(json_CensusTractsbyFamilyPoverty_5, {
             attribution: '',
-            interactive: true,
+            interactive: false,
             dataVar: 'json_CensusTractsbyFamilyPoverty_5',
             layerName: 'layer_CensusTractsbyFamilyPoverty_5',
             pane: 'pane_CensusTractsbyFamilyPoverty_5',
@@ -1074,11 +1107,19 @@
             pane: 'pane_Health_Centers_6',
             onEachFeature: pop_Health_Centers_6,
             pointToLayer: function (feature, latlng) {
-                var context = {
-                    feature: feature,
-                    variables: {}
-                };
-                return L.shapeMarker(latlng, style_Health_Centers_6_0(feature));
+                var marker = L.shapeMarker(latlng, style_Health_Centers_6_0(feature));
+                if (marker._path) {
+                marker._path.setAttribute("data-tooltip", "true");
+                }
+                // ✅ Add hover tooltip
+                marker.bindTooltip(feature.properties['Health Cen'], {
+                permanent: false,
+                className: 'my-tooltip',
+                direction: "top",
+                opacity: 0.9
+                });
+                // Return unchanged
+                return marker;
             },
         });
         bounds_group.addLayer(layer_Health_Centers_6);
@@ -1213,11 +1254,19 @@
             pane: 'pane_Health_Centers_Clipped_7',
             onEachFeature: pop_Health_Centers_Clipped_7,
             pointToLayer: function (feature, latlng) {
-                var context = {
-                    feature: feature,
-                    variables: {}
-                };
-                return L.circleMarker(latlng, style_Health_Centers_Clipped_7_0(feature));
+                var marker = L.shapeMarker(latlng, style_Health_Centers_Clipped_7_0(feature));
+                if (marker._path) {
+                marker._path.setAttribute("data-tooltip", "true");
+                }
+                // ✅ Add hover tooltip
+                marker.bindTooltip(feature.properties['Health Cen'], {
+                permanent: false,
+                className: 'my-tooltip',
+                direction: "top",
+                opacity: 0.9
+                });
+                // Return unchanged
+                return marker;
             },
         });
         bounds_group.addLayer(layer_Health_Centers_Clipped_7);
@@ -1488,11 +1537,19 @@
             pane: 'pane_Regions_2_6_Libraries_9',
             onEachFeature: pop_Regions_2_6_Libraries_9,
             pointToLayer: function (feature, latlng) {
-                var context = {
-                    feature: feature,
-                    variables: {}
-                };
-                return L.circleMarker(latlng, style_Regions_2_6_Libraries_9_0(feature));
+                var marker = L.shapeMarker(latlng, style_Regions_2_6_Libraries_9_0(feature));
+                if (marker._path) {
+                marker._path.setAttribute("data-tooltip", "true");
+                }
+                // ✅ Add hover tooltip
+                marker.bindTooltip(feature.properties.Name, {
+                permanent: false,
+                className: 'my-tooltip',
+                direction: "top",
+                opacity: 0.9
+                });
+                // Return unchanged
+                return marker;
             },
         });
         bounds_group.addLayer(layer_Regions_2_6_Libraries_9);
@@ -1636,15 +1693,86 @@
             pane: 'pane_Libraries_Clipped_10',
             onEachFeature: pop_Libraries_Clipped_10,
             pointToLayer: function (feature, latlng) {
-                var context = {
-                    feature: feature,
-                    variables: {}
-                };
-                return L.circleMarker(latlng, style_Libraries_Clipped_10_0(feature));
+                var marker = L.shapeMarker(latlng, style_Libraries_Clipped_10_0(feature));
+                if (marker._path) {
+                marker._path.setAttribute("data-tooltip", "true");
+                }
+                // ✅ Add hover tooltip
+                marker.bindTooltip(feature.properties.Name, {
+                permanent: false,
+                className: 'my-tooltip',
+                direction: "top",
+                opacity: 0.9
+                });
+                // Return unchanged
+                return marker;
             },
         });
         bounds_group.addLayer(layer_Libraries_Clipped_10);
         map.addLayer(layer_Libraries_Clipped_10);
+
+                function pop_foodfinder_locations_8(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Place Name'] !== null ? autolinker.link(String(feature.properties['Place Name']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Latitude'] !== null ? autolinker.link(String(feature.properties['Latitude']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Longitude'] !== null ? autolinker.link(String(feature.properties['Longitude']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+        function style_foodfinder_locations_8_0() {
+            return {
+                pane: 'pane_foodfinder_locations_8',
+                radius: 8.0,
+                opacity: 1,
+                color: 'rgba(50,87,128,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(72,180,182,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_foodfinder_locations_8');
+        map.getPane('pane_foodfinder_locations_8').style.zIndex = 408;
+        map.getPane('pane_foodfinder_locations_8').style['mix-blend-mode'] = 'normal';
+        var layer_foodfinder_locations_8 = new L.geoJson(json_foodfinder_locations_8, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_foodfinder_locations_8',
+            layerName: 'layer_foodfinder_locations_8',
+            pane: 'pane_foodfinder_locations_8',
+            onEachFeature: pop_foodfinder_locations_8,
+            pointToLayer: function (feature, latlng) {
+                var marker = L.shapeMarker(latlng, style_foodfinder_locations_8_0(feature));
+                if (marker._path) {
+                marker._path.setAttribute("data-tooltip", "true");
+                }
+                // ✅ Add hover tooltip
+                marker.bindTooltip(feature.properties['Place Name'], {
+                permanent: false,
+                className: 'my-tooltip',
+                direction: "top",
+                opacity: 0.9
+                });
+                // Return unchanged
+                return marker;
+            },
+        });
+        bounds_group.addLayer(layer_foodfinder_locations_8);
+        map.addLayer(layer_foodfinder_locations_8);
         /* === Custom Legend Control for Poverty Data === */
 const povertyLegend = L.control({ position: 'bottomright' });
 
@@ -1762,9 +1890,31 @@ map.on('click', function(e) {
         if (nearestHC) {
             const props = nearestHC.feature?.properties || {};
             const hcName = props['Health Cen'] || "Unknown Health Center";
-            infoContent += `<b>Nearest Health Center:</b> ${hcName}<br><b>Distance:</b> ${(nearestDistHC / 1000).toFixed(2)} km`;
+            infoContent += `<b>Nearest Health Center:</b> ${hcName}<br><b>Distance:</b> ${(nearestDistHC / 1000).toFixed(2)} km<br>`;
         } else {
-            infoContent += "No health centers found.";
+            infoContent += "No health centers found.<br>";
+        }
+        // --- FOOD ACCESS ---
+        let nearestFF = null;
+        let nearestDistFF = Infinity;
+
+        layer_foodfinder_locations_8.eachLayer(layer => {
+            const ffLatLng = layer.getLatLng?.() || layer.getBounds?.().getCenter?.();
+            if (ffLatLng) {
+                const dist = clickLatLng.distanceTo(ffLatLng);
+                if (dist < nearestDistFF) {
+                    nearestDistFF = dist;
+                    nearestFF = layer;
+                }
+            }
+        });
+
+        if (nearestFF) {
+            const props = nearestFF.feature?.properties || {};
+            const ffName = props['Place Name'] || "Unknown Food Access";
+            infoContent += `<b>Nearest Food Access:</b> ${ffName}<br><b>Distance:</b> ${(nearestDistFF / 1000).toFixed(2)} km`;
+        } else {
+            infoContent += "No food access found.";
         }
 
         // --- OUTPUT ---
@@ -1849,7 +1999,8 @@ function getTotalDistance(pt) {
     const dLib = getNearestDistance(pt, layer_Libraries_Clipped_10);
     const dHosp = getNearestDistance(pt, layer_Hospitals_Clipped_2);
     const dHC = getNearestDistance(pt, layer_Health_Centers_Clipped_7);
-    return dLib + dHosp + dHC;
+    const dFF = getNearestDistance(pt, layer_foodfinder_locations_8);
+    return dLib + dHosp + dHC + dFF;
 }
 
 function findWorstAccessPointAdaptive(bounds) {
@@ -1887,7 +2038,7 @@ function findWorstAccessPointAdaptive(bounds) {
     }).addTo(map);
 
     const popupContent = `
-    <b>Location with Worst Access to Lib/Hptl/HCs</b><br>
+    <b>Location with Worst Access to Lib/Hptl/HCs/Food</b><br>
     Sum of distances: ${(maxSum / 1000).toFixed(2)} km
     `;
 
