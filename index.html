@@ -751,7 +751,7 @@ map.on('click', function(e) {
             const props = nearestHC.feature?.properties || {};
             let hcName = props['Health Cen'] || "Unknown Health Center";
             if (hcName == 'MOBILE CLINIC 2' || hcName == 'Blue Ridge Dental Center') {
-                hcName = 'BLUE RIDGE MEDICAL CENTER, INC.'
+                hcName = 'Blue Ridge Medical Center--Arrington'
             }
             infoContent += `<b>Nearest Health Center:</b> ${hcName}<br><b>Distance:</b> ${(nearestDistHC / 1000).toFixed(2)} km<br>`;
         } else {
