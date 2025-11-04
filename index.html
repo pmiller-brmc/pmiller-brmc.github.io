@@ -678,9 +678,12 @@ function initializeMapBehavior() {
 initializeMapBehavior();
 
 // Click handler for nearest service detection
+var clickMarker = null;
 map.on('click', function(e) {
     try {
         const clickLatLng = e.latlng;
+        const lat = clickLatLng.lat;
+        const lng = clickLatLng.lng;
         let infoContent = "";
 
         // --- LIBRARY ---
@@ -779,6 +782,17 @@ map.on('click', function(e) {
 
         // --- OUTPUT ---
         document.getElementById("infoBox").innerHTML = infoContent;
+
+    if (clickMarker) {
+        map.removeLayer(clickMarker);
+    }
+
+    const clickIcon = L.icon({
+        iconUrl: 'icons8-select-50.png',
+        iconSize: [20,20],
+        iconAnchor: [10, 10]
+    });
+    clickMarker = L.marker([lat, lng], { icon: clickIcon}).addTo(map);
 
     } catch (err) {
         console.error("Distance tool error:", err);
