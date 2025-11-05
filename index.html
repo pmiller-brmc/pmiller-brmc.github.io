@@ -723,7 +723,7 @@ function runNearestServiceDetection(clickLatLng) {
   if (nearestLib) {
     const props = nearestLib.feature?.properties || {};
     const libName = props.Name || props.NAME || props.name || props.library || "Unknown Library";
-    infoContent += `<b>Nearest Library:</b> ${libName}<br><b>Distance:</b> ${(nearestDistLib / 1000).toFixed(2)} km<br>`;
+    infoContent += `<b>Nearest Library:</b> ${libName}<br><b>Distance:</b> ${(nearestDistLib / 1609.34).toFixed(2)} mi<br>`;
   } else {
     infoContent += "No libraries found.<br>";
   }
@@ -744,7 +744,7 @@ function runNearestServiceDetection(clickLatLng) {
   if (nearestHptl) {
     const props = nearestHptl.feature?.properties || {};
     const hptlName = props.Name || props.NAME || props.name || props.LandmkName || "Unknown Hospital";
-    infoContent += `<b>Nearest Hospital:</b> ${hptlName}<br><b>Distance:</b> ${(nearestDistHptl / 1000).toFixed(2)} km<br>`;
+    infoContent += `<b>Nearest Hospital:</b> ${hptlName}<br><b>Distance:</b> ${(nearestDistHptl / 1609.34).toFixed(2)} mi<br>`;
   } else {
     infoContent += "No hospitals found.<br>";
   }
@@ -768,7 +768,7 @@ function runNearestServiceDetection(clickLatLng) {
     if (hcName === 'MOBILE CLINIC 2' || hcName === 'Blue Ridge Dental Center') {
       hcName = 'Blue Ridge Medical Center--Arrington';
     }
-    infoContent += `<b>Nearest Health Center:</b> ${hcName}<br><b>Distance:</b> ${(nearestDistHC / 1000).toFixed(2)} km<br>`;
+    infoContent += `<b>Nearest Health Center:</b> ${hcName}<br><b>Distance:</b> ${(nearestDistHC / 1609.34).toFixed(2)} mi<br>`;
   } else {
     infoContent += "No health centers found.<br>";
   }
@@ -789,7 +789,7 @@ function runNearestServiceDetection(clickLatLng) {
   if (nearestFF) {
     const props = nearestFF.feature?.properties || {};
     const ffName = props['Place Name'] || "Unknown Food Access";
-    infoContent += `<b>Nearest Food Access:</b> ${ffName}<br><b>Distance:</b> ${(nearestDistFF / 1000).toFixed(2)} km`;
+    infoContent += `<b>Nearest Food Access:</b> ${ffName}<br><b>Distance:</b> ${(nearestDistFF / 1609.34).toFixed(2)} mi`;
   } else {
     infoContent += "No food access found.";
   }
@@ -834,7 +834,7 @@ map.on('click', function(e) {
         if (nearestLib) {
             const props = nearestLib.feature?.properties || {};
             const libName = props.Name || props.NAME || props.name || props.library || "Unknown Library";
-            infoContent += `<b>Nearest Library:</b> ${libName}<br><b>Distance:</b> ${(nearestDistLib / 1000).toFixed(2)} km<br>`;
+            infoContent += `<b>Nearest Library:</b> ${libName}<br><b>Distance:</b> ${(nearestDistLib / 1609.34).toFixed(2)} mi<br>`;
         } else {
             infoContent += "No libraries found.<br>";
         }
@@ -857,7 +857,7 @@ map.on('click', function(e) {
         if (nearestHptl) {
             const props = nearestHptl.feature?.properties || {};
             const hptlName = props.Name || props.NAME || props.name || props.LandmkName || "Unknown Hospital";
-            infoContent += `<b>Nearest Hospital:</b> ${hptlName}<br><b>Distance:</b> ${(nearestDistHptl / 1000).toFixed(2)} km<br>`;
+            infoContent += `<b>Nearest Hospital:</b> ${hptlName}<br><b>Distance:</b> ${(nearestDistHptl / 1609.34).toFixed(2)} mi<br>`;
         } else {
             infoContent += "No hospitals found.<br>";
         }
@@ -883,7 +883,7 @@ map.on('click', function(e) {
             if (hcName == 'MOBILE CLINIC 2' || hcName == 'Blue Ridge Dental Center') {
                 hcName = 'Blue Ridge Medical Center--Arrington'
             }
-            infoContent += `<b>Nearest Health Center:</b> ${hcName}<br><b>Distance:</b> ${(nearestDistHC / 1000).toFixed(2)} km<br>`;
+            infoContent += `<b>Nearest Health Center:</b> ${hcName}<br><b>Distance:</b> ${(nearestDistHC / 1609.34).toFixed(2)} mi<br>`;
         } else {
             infoContent += "No health centers found.<br>";
         }
@@ -905,7 +905,7 @@ map.on('click', function(e) {
         if (nearestFF) {
             const props = nearestFF.feature?.properties || {};
             const ffName = props['Place Name'] || "Unknown Food Access";
-            infoContent += `<b>Nearest Food Access:</b> ${ffName}<br><b>Distance:</b> ${(nearestDistFF / 1000).toFixed(2)} km`;
+            infoContent += `<b>Nearest Food Access:</b> ${ffName}<br><b>Distance:</b> ${(nearestDistFF / 1609.34).toFixed(2)} mi`;
         } else {
             infoContent += "No food access found.";
         }
@@ -1043,7 +1043,7 @@ function findWorstAccessPointAdaptive(bounds) {
 
     const popupContent = `
     <b>Location with Worst Access to Libraries/Hospitals/Health Centers/Food Access</b><br>
-    Sum of distances: ${(maxSum / 1000).toFixed(2)} km
+    Sum of distances: ${(maxSum / 1609.34).toFixed(2)} mi
     `;
 
     marker.bindPopup(popupContent);
