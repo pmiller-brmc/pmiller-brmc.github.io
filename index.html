@@ -65,6 +65,31 @@
             white-space: nowrap; /* change to normal if you want line wrap */
             pointer-events: none; /* keep tooltip non-interactive */
             }
+            .address-search {
+            position: absolute;
+            top: 10px;
+            left: 5%;
+            background: rgba(255,255,255,0.95);
+            padding: 8px;
+            border-radius: 6px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            z-index: 1000;
+            }
+            #addressInput {
+            padding: 10px;
+            font-size: 14px;
+            width: 100%;
+            box-sizing: border-box;
+            }
+
+            #addressSubmit {
+            padding: 10px;
+            font-size: 14px;
+            width: 100%;
+            box-sizing: border-box;
+            cursor: pointer;
+            }
+
             </style>
     </head>
     <style>
@@ -90,8 +115,11 @@
     that needs to be clickable (like a legend or button), 
     you may need to add exceptions here later. */
     </style>
-
     <body>
+        <div id="addressSearch" class="address-search">
+            <input type="type" id="addressInput" placeholder="Enter an address..."/>
+            <button id="addressSubmit">Find Nearest Services</button>
+        </div>
         <div id="infoBox">Click anywhere on the map to find the nearest library, hospital, health center, and food access point.</div>
         <div id="map">
         </div>
@@ -674,6 +702,111 @@ function initializeMapBehavior() {
 
 initializeMapBehavior();
 
+function runNearestServiceDetection(clickLatLng) {
+  const lat = clickLatLng.lat;
+  const lng = clickLatLng.lng;
+  let infoContent = "";
+
+  // --- LIBRARY ---
+  let nearestLib = null;
+  let nearestDistLib = Infinity;
+  layer_Libraries_Clipped_10.eachLayer(layer => {
+    const libLatLng = layer.getLatLng?.() || layer.getBounds?.().getCenter?.();
+    if (libLatLng) {
+      const dist = clickLatLng.distanceTo(libLatLng);
+      if (dist < nearestDistLib) {
+        nearestDistLib = dist;
+        nearestLib = layer;
+      }
+    }
+  });
+  if (nearestLib) {
+    const props = nearestLib.feature?.properties || {};
+    const libName = props.Name || props.NAME || props.name || props.library || "Unknown Library";
+    infoContent += `<b>Nearest Library:</b> ${libName}<br><b>Distance:</b> ${(nearestDistLib / 1000).toFixed(2)} km<br>`;
+  } else {
+    infoContent += "No libraries found.<br>";
+  }
+
+  // --- HOSPITAL ---
+  let nearestHptl = null;
+  let nearestDistHptl = Infinity;
+  layer_Hospitals_Clipped_2.eachLayer(layer => {
+    const hptlLatLng = layer.getLatLng?.() || layer.getBounds?.().getCenter?.();
+    if (hptlLatLng) {
+      const dist = clickLatLng.distanceTo(hptlLatLng);
+      if (dist < nearestDistHptl) {
+        nearestDistHptl = dist;
+        nearestHptl = layer;
+      }
+    }
+  });
+  if (nearestHptl) {
+    const props = nearestHptl.feature?.properties || {};
+    const hptlName = props.Name || props.NAME || props.name || props.LandmkName || "Unknown Hospital";
+    infoContent += `<b>Nearest Hospital:</b> ${hptlName}<br><b>Distance:</b> ${(nearestDistHptl / 1000).toFixed(2)} km<br>`;
+  } else {
+    infoContent += "No hospitals found.<br>";
+  }
+
+  // --- HEALTH CENTER ---
+  let nearestHC = null;
+  let nearestDistHC = Infinity;
+  layer_Health_Centers_Clipped_7.eachLayer(layer => {
+    const hcLatLng = layer.getLatLng?.() || layer.getBounds?.().getCenter?.();
+    if (hcLatLng) {
+      const dist = clickLatLng.distanceTo(hcLatLng);
+      if (dist < nearestDistHC) {
+        nearestDistHC = dist;
+        nearestHC = layer;
+      }
+    }
+  });
+  if (nearestHC) {
+    const props = nearestHC.feature?.properties || {};
+    let hcName = props['Health Cen'] || "Unknown Health Center";
+    if (hcName === 'MOBILE CLINIC 2' || hcName === 'Blue Ridge Dental Center') {
+      hcName = 'Blue Ridge Medical Center--Arrington';
+    }
+    infoContent += `<b>Nearest Health Center:</b> ${hcName}<br><b>Distance:</b> ${(nearestDistHC / 1000).toFixed(2)} km<br>`;
+  } else {
+    infoContent += "No health centers found.<br>";
+  }
+
+  // --- FOOD ACCESS ---
+  let nearestFF = null;
+  let nearestDistFF = Infinity;
+  layer_foodfinder_locations_8.eachLayer(layer => {
+    const ffLatLng = layer.getLatLng?.() || layer.getBounds?.().getCenter?.();
+    if (ffLatLng) {
+      const dist = clickLatLng.distanceTo(ffLatLng);
+      if (dist < nearestDistFF) {
+        nearestDistFF = dist;
+        nearestFF = layer;
+      }
+    }
+  });
+  if (nearestFF) {
+    const props = nearestFF.feature?.properties || {};
+    const ffName = props['Place Name'] || "Unknown Food Access";
+    infoContent += `<b>Nearest Food Access:</b> ${ffName}<br><b>Distance:</b> ${(nearestDistFF / 1000).toFixed(2)} km`;
+  } else {
+    infoContent += "No food access found.";
+  }
+
+  // --- OUTPUT ---
+  document.getElementById("infoBox").innerHTML = infoContent;
+
+  if (clickMarker) map.removeLayer(clickMarker);
+
+  const clickIcon = L.icon({
+    iconUrl: 'icons8-select-50.png',
+    iconSize: [20, 20],
+    iconAnchor: [10, 10]
+  });
+  clickMarker = L.marker([lat, lng], { icon: clickIcon }).addTo(map);
+}
+
 // Click handler for nearest service detection
 var clickMarker = null;
 map.on('click', function(e) {
@@ -941,6 +1074,34 @@ setTimeout(() => {
 
   findWorstAccessPointAdaptive(bounds);
 }, 3000);
+
+document.getElementById("addressSubmit").addEventListener("click", () => {
+  const address = document.getElementById("addressInput").value.trim();
+  if (!address) return;
+
+  const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`;
+
+  fetch(url)
+    .then(res => res.json())
+    .then(data => {
+      if (data.length === 0) {
+        alert("Address not found.");
+        return;
+      }
+
+      const lat = parseFloat(data[0].lat);
+      const lng = parseFloat(data[0].lon);
+      const latlng = L.latLng(lat, lng);
+
+      map.setView(latlng, 13); // zoom to location
+      runNearestServiceDetection(latlng); // reuse your click logic
+    })
+    .catch(err => {
+      console.error("Geocoding error:", err);
+      alert("Failed to geocode address.");
+    });
+});
+
         </script>        
 <footer id="map-footer"
     style="
