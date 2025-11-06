@@ -120,7 +120,16 @@
             <input type="type" id="addressInput" placeholder="Enter an address..."/>
             <button id="addressSubmit">Find Nearest Services</button>
         </div>
-        <div id="infoBox">Click anywhere on the map to find the nearest library, hospital, health center, and food access point.</div>
+        <div id="infoBox">Click anywhere on the map to find the nearest library, hospital, health center, and food access point.
+            <div id="hospitalSection" style="display:none; margin-top:10px;">
+                <button id="hptlBackButton" style="margin-right:6px;">&#x25C0;</button>
+                <div id="hospitalInfo" style="display:inline-block;"></div>
+                <button id="hptlFwdButton" style="margin-left:6px;">&#x25B6;</button>
+            </div>
+            <div id="otherInfo"></div>
+            </div>
+
+        </div>
         <div id="map">
         </div>
         <script src="js/qgis2web_expressions.js"></script>
@@ -703,6 +712,30 @@ function initializeMapBehavior() {
 
 initializeMapBehavior();
 
+let hptlArray = [];
+currentHptlIndex = 0;
+
+function updateHospitalInfo() {
+  const h = hptlArray[currentHptlIndex];
+  if (!h) return;
+
+  // Slight delay prevents event conflict with DOM update
+  setTimeout(() => {
+    const infoDiv = document.getElementById("hospitalInfo");
+    infoDiv.innerHTML = `
+      <b>Nearest Hospital:</b> ${h.name}<br>
+      <b>Distance:</b> ${(h.dist / 1609.34).toFixed(2)} mi
+    `;
+  }, 50);
+}
+
+// --- Stop Clicks on infoBox from propagating to the map ---
+const infoBox = document.getElementById("infoBox");
+L.DomEvent.on(infoBox, 'click', L.DomEvent.stopPropagation);
+L.DomEvent.on(infoBox, 'mousedown', L.DomEvent.stopPropagation);
+L.DomEvent.on(infoBox, 'dblclick', L.DomEvent.stopPropagation);
+
+
 function runNearestServiceDetection(clickLatLng) {
   const lat = clickLatLng.lat;
   const lng = clickLatLng.lng;
@@ -730,22 +763,46 @@ function runNearestServiceDetection(clickLatLng) {
   }
 
   // --- HOSPITAL ---
-  let nearestHptl = null;
-  let nearestDistHptl = Infinity;
-  layer_Hospitals_Clipped_2.eachLayer(layer => {
-    const hptlLatLng = layer.getLatLng?.() || layer.getBounds?.().getCenter?.();
-    if (hptlLatLng) {
-      const dist = clickLatLng.distanceTo(hptlLatLng);
-      if (dist < nearestDistHptl) {
-        nearestDistHptl = dist;
-        nearestHptl = layer;
-      }
-    }
-  });
+hptlArray = [];
+layer_Hospitals_Clipped_2.eachLayer(layer => {
+  const hptlLatLng = layer.getLatLng?.() || layer.getBounds?.().getCenter?.();
+  if (!hptlLatLng) return;
+
+  const dist = clickLatLng.distanceTo(hptlLatLng);
+  const props = layer.feature?.properties || {};
+  const hptlName = props.Name || props.NAME || props.name || props.LandmkName || "Unknown Hospital";
+
+  hptlArray.push({ name: hptlName, dist, layer });
+});
+
+// Sort by distance (smallest to largest)
+hptlArray.sort((a, b) => a.dist - b.dist);
+
+// Optional: set nearest hospital
+const nearestHptl = hptlArray[0]?.layer || null;
+const nearestDistHptl = hptlArray[0]?.dist || Infinity;
+currentHptlIndex = 0 
+
   if (nearestHptl) {
     const props = nearestHptl.feature?.properties || {};
     const hptlName = props.Name || props.NAME || props.name || props.LandmkName || "Unknown Hospital";
-    infoContent += `<b>Nearest Hospital:</b> ${hptlName}<br><b>Distance:</b> ${(nearestDistHptl / 1609.34).toFixed(2)} mi<br>`;
+    // infoContent += 
+    //     `
+    //     <div id="Hospital" style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 10px;">
+    //         <div id = "hospitalBack">
+    //             <button id = "hptlBackButton" style="margin-right:6px;">&#x25C0</button>
+    //         </div>
+    //         <div id = "hospitalInfo">
+    //             <b>Nearest Hospital:</b> ${hptlName}<br><b>Distance:</b> ${(nearestDistHptl / 1609.34).toFixed(2)} mi<br>
+    //         </div>
+    //         <div id = "hospitalForward">
+    //             <button id = "hptlFwdButton" style="margin-right:6px;">&#x25B6</button>
+    //         </div>
+    //     </div>
+    //     `;
+    
+    
+    // `<b>Nearest Hospital:</b> ${hptlName}<br><b>Distance:</b> ${(nearestDistHptl / 1609.34).toFixed(2)} mi<br>`;
   } else {
     infoContent += "No hospitals found.<br>";
   }
@@ -795,8 +852,23 @@ function runNearestServiceDetection(clickLatLng) {
     infoContent += "No food access found.";
   }
 
-  // --- OUTPUT ---
-  document.getElementById("infoBox").innerHTML = infoContent;
+// --- OUTPUT ---
+
+// Split hospital info from the rest
+document.getElementById("otherInfo").innerHTML = infoContent; // All non-hospital info stays here
+
+// Update hospital info separately
+if (hptlArray.length > 0) {
+  const current = hptlArray[currentHptlIndex];
+  document.getElementById("hospitalSection").style.display = "block";
+  document.getElementById("hospitalInfo").innerHTML = `
+    <b>Nearest Hospital:</b> ${current.name}<br>
+    <b>Distance:</b> ${(current.dist / 1609.34).toFixed(2)} mi
+  `;
+} else {
+  document.getElementById("hospitalSection").style.display = "none";
+}
+
 
   if (clickMarker) map.removeLayer(clickMarker);
 
@@ -813,117 +885,7 @@ var clickMarker = null;
 map.on('click', function(e) {
     try {
         const clickLatLng = e.latlng;
-        const lat = clickLatLng.lat;
-        const lng = clickLatLng.lng;
-        let infoContent = "";
-
-        // --- LIBRARY ---
-        let nearestLib = null;
-        let nearestDistLib = Infinity;
-
-        layer_Libraries_Clipped_10.eachLayer(layer => {
-            const libLatLng = layer.getLatLng?.() || layer.getBounds?.().getCenter?.();
-            if (libLatLng) {
-                const dist = clickLatLng.distanceTo(libLatLng);
-                if (dist < nearestDistLib) {
-                    nearestDistLib = dist;
-                    nearestLib = layer;
-                }
-            }
-        });
-
-        if (nearestLib) {
-            const props = nearestLib.feature?.properties || {};
-            const libName = props.Name || props.NAME || props.name || props.library || "Unknown Library";
-            infoContent += `<b>Nearest Library:</b> ${libName}<br><b>Distance:</b> ${(nearestDistLib / 1609.34).toFixed(2)} mi<br>`;
-        } else {
-            infoContent += "No libraries found.<br>";
-        }
-
-        // --- HOSPITAL ---
-        let nearestHptl = null;
-        let nearestDistHptl = Infinity;
-
-        layer_Hospitals_Clipped_2.eachLayer(layer => {
-            const hptlLatLng = layer.getLatLng?.() || layer.getBounds?.().getCenter?.();
-            if (hptlLatLng) {
-                const dist = clickLatLng.distanceTo(hptlLatLng);
-                if (dist < nearestDistHptl) {
-                    nearestDistHptl = dist;
-                    nearestHptl = layer;
-                }
-            }
-        });
-
-        if (nearestHptl) {
-            const props = nearestHptl.feature?.properties || {};
-            const hptlName = props.Name || props.NAME || props.name || props.LandmkName || "Unknown Hospital";
-            infoContent += `<b>Nearest Hospital:</b> ${hptlName}<br><b>Distance:</b> ${(nearestDistHptl / 1609.34).toFixed(2)} mi<br>`;
-        } else {
-            infoContent += "No hospitals found.<br>";
-        }
-
-        // --- HEALTH CENTER ---
-        let nearestHC = null;
-        let nearestDistHC = Infinity;
-
-        layer_Health_Centers_Clipped_7.eachLayer(layer => {
-            const hcLatLng = layer.getLatLng?.() || layer.getBounds?.().getCenter?.();
-            if (hcLatLng) {
-                const dist = clickLatLng.distanceTo(hcLatLng);
-                if (dist < nearestDistHC) {
-                    nearestDistHC = dist;
-                    nearestHC = layer;
-                }
-            }
-        });
-
-        if (nearestHC) {
-            const props = nearestHC.feature?.properties || {};
-            let hcName = props['Health Cen'] || "Unknown Health Center";
-            if (hcName == 'MOBILE CLINIC 2' || hcName == 'Blue Ridge Dental Center') {
-                hcName = 'Blue Ridge Medical Center--Arrington'
-            }
-            infoContent += `<b>Nearest Health Center:</b> ${hcName}<br><b>Distance:</b> ${(nearestDistHC / 1609.34).toFixed(2)} mi<br>`;
-        } else {
-            infoContent += "No health centers found.<br>";
-        }
-        // --- FOOD ACCESS ---
-        let nearestFF = null;
-        let nearestDistFF = Infinity;
-
-        layer_foodfinder_locations_8.eachLayer(layer => {
-            const ffLatLng = layer.getLatLng?.() || layer.getBounds?.().getCenter?.();
-            if (ffLatLng) {
-                const dist = clickLatLng.distanceTo(ffLatLng);
-                if (dist < nearestDistFF) {
-                    nearestDistFF = dist;
-                    nearestFF = layer;
-                }
-            }
-        });
-
-        if (nearestFF) {
-            const props = nearestFF.feature?.properties || {};
-            const ffName = props['Place Name'] || "Unknown Food Access";
-            infoContent += `<b>Nearest Food Access:</b> ${ffName}<br><b>Distance:</b> ${(nearestDistFF / 1609.34).toFixed(2)} mi`;
-        } else {
-            infoContent += "No food access found.";
-        }
-
-        // --- OUTPUT ---
-        document.getElementById("infoBox").innerHTML = infoContent;
-
-    if (clickMarker) {
-        map.removeLayer(clickMarker);
-    }
-
-    const clickIcon = L.icon({
-        iconUrl: 'icons8-select-50.png',
-        iconSize: [20,20],
-        iconAnchor: [10, 10]
-    });
-    clickMarker = L.marker([lat, lng], { icon: clickIcon}).addTo(map);
+        runNearestServiceDetection(clickLatLng)
 
     } catch (err) {
         console.error("Distance tool error:", err);
@@ -1102,6 +1064,24 @@ document.getElementById("addressSubmit").addEventListener("click", () => {
       alert("Failed to geocode address.");
     });
 });
+
+const backBtn = document.getElementById("hptlBackButton");
+const fwdBtn = document.getElementById("hptlFwdButton");
+
+backBtn.addEventListener("click", (e) => {
+  e.stopPropagation();
+  if (!hptlArray.length) return;
+  currentHptlIndex = (currentHptlIndex - 1 + hptlArray.length) % hptlArray.length;
+  setTimeout(updateHospitalInfo, 20); // small delay ensures DOM sync
+});
+
+fwdBtn.addEventListener("click", (e) => {
+  e.stopPropagation();
+  if (!hptlArray.length) return;
+  currentHptlIndex = (currentHptlIndex + 1) % hptlArray.length;
+  setTimeout(updateHospitalInfo, 20); // fixes double-click issue
+});
+
 
         </script>        
 <footer id="map-footer"
