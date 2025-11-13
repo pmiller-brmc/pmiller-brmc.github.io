@@ -24,8 +24,8 @@
             #infoBox {
             position: absolute;
             top: 10px;
-            left: 50%;
-            transform: translateX(-50%);
+            right: 5%;
+            /* transform: translateX(-50%); */
             background: rgba(255,255,255,0.95);
             border: 1px solid #444;
             border-radius: 8px;
@@ -157,6 +157,8 @@
         <script src="data/Regions_2_6_Libraries_9.js"></script>
         <script src="data/Libraries_Clipped_10.js"></script>
         <script src="data/foodfinder_locations_8.js"></script>
+        <script src="data/Outreach.js"></script>
+
         <script>
 
         var map = L.map('map', {
@@ -665,6 +667,75 @@
         });
         bounds_group.addLayer(layer_foodfinder_locations_8);
         map.addLayer(layer_foodfinder_locations_8);
+
+
+function pop_Outreach(feature, layer) {
+    var popupContent = '<table>\
+        <tr>\
+            <td colspan="2">' + (feature.properties['Name'] !== null ? autolinker.link(String(feature.properties['Name']).replace(/'/g, '&#39;')) : '') + '</td>\
+        </tr>\
+        <tr>\
+            <td colspan="2">' + (feature.properties['description'] !== null ? autolinker.link(String(feature.properties['description']).replace(/'/g, '&#39;')) : '') + '</td>\
+        </tr>\
+        <tr>\
+            <td colspan="2">' + (feature.properties['Address'] !== null ? autolinker.link(String(feature.properties['Address']).replace(/'/g, '&#39;')) : '') + '</td>\
+        </tr>\
+        <tr>\
+            <td colspan="2">' + (feature.properties['City'] !== null ? autolinker.link(String(feature.properties['City']).replace(/'/g, '&#39;')) : '') + '</td>\
+        </tr>\
+        <tr>\
+            <td colspan="2">' + (feature.properties['Phone'] !== null ? autolinker.link(String(feature.properties['Phone']).replace(/'/g, '&#39;')) : '') + '</td>\
+        </tr>\
+    </table>';
+    
+    var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+    
+    layer.on('popupopen', function(e) {
+        addClassToPopupIfMedia(content, e.popup);
+    });
+    
+    layer.bindPopup(content, { maxHeight: 400 });
+}
+        bounds_group.addLayer(layer_foodfinder_locations_8);
+        map.addLayer(layer_foodfinder_locations_8);
+
+// Create a dedicated pane for the outreach locations
+map.createPane('pane_Outreach');
+map.getPane('pane_Outreach').style.zIndex = 415;
+map.getPane('pane_Outreach').style['mix-blend-mode'] = 'normal';
+
+// Add the GeoJSON layer
+var layer_Outreach = new L.geoJson(Outreach, {
+    attribution: '',
+    interactive: true,
+    dataVar: 'Outreach',
+    layerName: 'layer_Outreach',
+    pane: 'pane_Outreach',
+    onEachFeature: pop_Outreach,
+    pointToLayer: function (feature, latlng) {
+        var outreachIcon = L.icon({
+            iconUrl: 'icons8-unity-64.png', // replace with your icon
+            iconSize: [30, 30],
+            iconAnchor: [12, 12],
+            popupAnchor: [0, -12]
+        });
+
+        var marker = L.marker(latlng, { icon: outreachIcon });
+        
+        // Add a hover tooltip showing the Name
+        marker.bindTooltip(feature.properties.Name, {
+            permanent: false,
+            className: 'my-tooltip',
+            direction: "top",
+            opacity: 0.9
+        });
+
+        return marker;
+    },
+});
+        bounds_group.addLayer(layer_Outreach);
+        map.addLayer(layer_Outreach);
+
         /* === Custom Legend Control for Poverty Data === */
 const povertyLegend = L.control({ position: 'bottomright' });
 
@@ -858,15 +929,20 @@ currentHptlIndex = 0
 document.getElementById("otherInfo").innerHTML = infoContent; // All non-hospital info stays here
 
 // Update hospital info separately
+const hospitalSection = document.getElementById("hospitalSection");
+const hospitalInfo = document.getElementById("hospitalInfo");
+
 if (hptlArray.length > 0) {
+  currentHptlIndex = 0;
+  hospitalSection.style.display = "block";
   const current = hptlArray[currentHptlIndex];
-  document.getElementById("hospitalSection").style.display = "block";
-  document.getElementById("hospitalInfo").innerHTML = `
+  hospitalInfo.innerHTML = `
     <b>Nearest Hospital:</b> ${current.name}<br>
     <b>Distance:</b> ${(current.dist / 1609.34).toFixed(2)} mi
   `;
 } else {
-  document.getElementById("hospitalSection").style.display = "none";
+  hospitalSection.style.display = "none";
+  hospitalInfo.innerHTML = "";
 }
 
 
