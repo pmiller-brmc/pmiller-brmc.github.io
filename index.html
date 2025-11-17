@@ -216,7 +216,6 @@
                     video.style.maxWidth = "60vw";
                     imgTd.parentNode.replaceChild(video, imgTd);
                     popup._contentNode.classList.add('media');
-                    // Aggiorna il popup quando il video carica i metadati
                     video.addEventListener('loadedmetadata', function() {
                         popup.update();
                     });
@@ -305,7 +304,7 @@
             onEachFeature: pop_Hospitals_Clipped_2,
             pointToLayer: function (feature, latlng) {
                 var hospitalIcon = L.icon({
-                    iconUrl: 'hospital_13298007.png', // 🏥 hospital icon
+                    iconUrl: 'hospital_13298007.png', // hospital icon
                     iconSize: [24, 24],
                     iconAnchor: [12, 12],
                     popupAnchor: [0, -12]
@@ -315,7 +314,7 @@
                 if (marker._path) {
                 marker._path.setAttribute("data-tooltip", "true");
                 }
-                // ✅ Add hover tooltip
+                // Add hover tooltip
                 marker.bindTooltip(feature.properties.LandmkName, {
                 permanent: false,
                 className: 'my-tooltip',
@@ -564,7 +563,7 @@
                 if (marker._path) {
                 marker._path.setAttribute("data-tooltip", "true");
                 }
-                // ✅ Add hover tooltip
+                // Add hover tooltip
                 marker.bindTooltip(feature.properties['Health Cen'], {
                 permanent: false,
                 className: 'my-tooltip',
@@ -619,7 +618,7 @@
                 if (marker._path) {
                 marker._path.setAttribute("data-tooltip", "true");
                 }
-                // ✅ Add hover tooltip
+                // Add hover tooltip
                 marker.bindTooltip(feature.properties.Name, {
                 permanent: false,
                 className: 'my-tooltip',
@@ -727,7 +726,7 @@ var layer_Outreach = new L.geoJson(Outreach, {
     onEachFeature: pop_Outreach,
     pointToLayer: function (feature, latlng) {
         var outreachIcon = L.icon({
-            iconUrl: 'icons8-unity-64.png', // replace with your icon
+            iconUrl: 'icons8-unity-64.png',
             iconSize: [30, 30],
             iconAnchor: [12, 12],
             popupAnchor: [0, -12]
@@ -735,7 +734,7 @@ var layer_Outreach = new L.geoJson(Outreach, {
 
         var marker = L.marker(latlng, { icon: outreachIcon });
         
-        // Add a hover tooltip showing the Name
+        // Add hover tooltip showing the Name
         marker.bindTooltip(feature.properties.Name, {
             permanent: false,
             className: 'my-tooltip',
@@ -778,7 +777,6 @@ povertyLegend.onAdd = function (map) {
 };
 
 povertyLegend.addTo(map);
-/* ============================================== */
 // Reset labels for filtered counties
 function resetCountyLabels() {
     resetLabels([layer_filtered_countiescounties_4]);
@@ -803,7 +801,7 @@ function updateHospitalInfo() {
   const h = hptlArray[currentHptlIndex];
   if (!h) return;
 
-  // Slight delay prevents event conflict with DOM update
+  // Slight delay prevents event conflict with DOM update, at least in theory
   setTimeout(() => {
     const infoDiv = document.getElementById("hospitalInfo");
     infoDiv.innerHTML = `
@@ -813,7 +811,7 @@ function updateHospitalInfo() {
   }, 50);
 }
 
-// --- Stop Clicks on infoBox from propagating to the map ---
+// stop clicks on infoBox from propagating to the map
 const infoBox = document.getElementById("infoBox");
 L.DomEvent.on(infoBox, 'click', L.DomEvent.stopPropagation);
 L.DomEvent.on(infoBox, 'mousedown', L.DomEvent.stopPropagation);
@@ -870,23 +868,7 @@ currentHptlIndex = 0
   if (nearestHptl) {
     const props = nearestHptl.feature?.properties || {};
     const hptlName = props.Name || props.NAME || props.name || props.LandmkName || "Unknown Hospital";
-    // infoContent += 
-    //     `
-    //     <div id="Hospital" style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 10px;">
-    //         <div id = "hospitalBack">
-    //             <button id = "hptlBackButton" style="margin-right:6px;">&#x25C0</button>
-    //         </div>
-    //         <div id = "hospitalInfo">
-    //             <b>Nearest Hospital:</b> ${hptlName}<br><b>Distance:</b> ${(nearestDistHptl / 1609.34).toFixed(2)} mi<br>
-    //         </div>
-    //         <div id = "hospitalForward">
-    //             <button id = "hptlFwdButton" style="margin-right:6px;">&#x25B6</button>
-    //         </div>
-    //     </div>
-    //     `;
-    
-    
-    // `<b>Nearest Hospital:</b> ${hptlName}<br><b>Distance:</b> ${(nearestDistHptl / 1609.34).toFixed(2)} mi<br>`;
+
   } else {
     infoContent += "No hospitals found.<br>";
   }
@@ -987,7 +969,6 @@ console.log("Libraries layer:", layer_Libraries_Clipped_10);
 console.log("Hospitals layer:", layer_Hospitals_Clipped_2);
 console.log("Health Centers layer:", layer_Health_Centers_Clipped_7);
 
-        // setBounds();
 // Generate a grid of points across a bounding box
 function generateGrid(bounds, stepKm = 5) {
     const points = [];
@@ -1161,7 +1142,7 @@ backBtn.addEventListener("click", (e) => {
   e.stopPropagation();
   if (!hptlArray.length) return;
   currentHptlIndex = (currentHptlIndex - 1 + hptlArray.length) % hptlArray.length;
-  setTimeout(updateHospitalInfo, 20); // small delay ensures DOM sync
+  setTimeout(updateHospitalInfo, 20); // small delay for DOM sync, hopefully
 });
 
 fwdBtn.addEventListener("click", (e) => {
