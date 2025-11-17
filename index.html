@@ -11,6 +11,8 @@
         <link rel="stylesheet" href="css/qgis2web.css">
         <link rel="stylesheet" href="css/fontawesome-all.min.css">
         <link rel="stylesheet" href="css/leaflet.photon.css">
+        <link rel="stylesheet" href="css/MarkerCluster.css" />
+        <link rel="stylesheet" href="css/MarkerCluster.Default.css" />
         <style>
         html, body, #map {
             width: 100%;
@@ -158,6 +160,7 @@
         <script src="data/Libraries_Clipped_10.js"></script>
         <script src="data/foodfinder_locations_8.js"></script>
         <script src="data/Outreach.js"></script>
+        <script src="js/leaflet.markercluster.js"></script>
 
         <script>
 
@@ -498,6 +501,14 @@
         });
         bounds_group.addLayer(layer_CensusTractsbyFamilyPoverty_5);
         map.addLayer(layer_CensusTractsbyFamilyPoverty_5);
+
+        // Cluster only VERY close points
+        var healthCluster = L.markerClusterGroup({
+            // Defines how close points must be to cluster (in pixels)
+            maxClusterRadius: 20,   // VERY close (~20px)
+        });
+
+
         function pop_Health_Centers_Clipped_7(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
@@ -541,7 +552,6 @@
             dataVar: 'json_Health_Centers_Clipped_7',
             layerName: 'layer_Health_Centers_Clipped_7',
             pane: 'pane_Health_Centers_Clipped_7',
-            onEachFeature: pop_Health_Centers_Clipped_7,
             pointToLayer: function (feature, latlng) {
                 var healthCenterIcon = L.icon({
                     iconUrl: 'hospital_9707153.png',
@@ -550,6 +560,7 @@
                     popupAnchor: [0, -12]
                 });
                 var marker = L.marker(latlng, { icon: healthCenterIcon});
+                pop_Health_Centers_Clipped_7(feature, marker);
                 if (marker._path) {
                 marker._path.setAttribute("data-tooltip", "true");
                 }
@@ -564,8 +575,10 @@
                 return marker;
             },
         });
-        bounds_group.addLayer(layer_Health_Centers_Clipped_7);
-        map.addLayer(layer_Health_Centers_Clipped_7);
+        healthCluster.addLayer(layer_Health_Centers_Clipped_7);
+        map.addLayer(healthCluster);
+        bounds_group.addLayer(healthCluster);
+
         function pop_Libraries_Clipped_10(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
