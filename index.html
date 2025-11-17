@@ -64,7 +64,7 @@
             padding: 6px 10px;
             box-shadow: 0 2px 6px rgba(0,0,0,0.25);
             font-family: "Inter", Roboto, Arial, sans-serif;
-            white-space: nowrap; /* change to normal if you want line wrap */
+            white-space: nowrap;
             pointer-events: none; /* keep tooltip non-interactive */
             }
             .address-search {
@@ -113,9 +113,9 @@
 }
 
 
-    /* IMPORTANT EXCEPTION: If you have a specific custom control or tool 
-    that needs to be clickable (like a legend or button), 
-    you may need to add exceptions here later. */
+    /* IMPORTANT EXCEPTION: If a specific custom control or tool 
+    needs to be clickable (like a legend or button), 
+    may need to add exceptions here later. */
     </style>
     <body>
         <div id="addressSearch" class="address-search">
@@ -800,22 +800,20 @@ currentHptlIndex = 0;
 function updateHospitalInfo() {
   const h = hptlArray[currentHptlIndex];
   if (!h) return;
+  console.log("Hospital info updated to:", h.name);
 
-  // Slight delay prevents event conflict with DOM update, at least in theory
-  setTimeout(() => {
-    const infoDiv = document.getElementById("hospitalInfo");
-    infoDiv.innerHTML = `
-      <b>Nearest Hospital:</b> ${h.name}<br>
-      <b>Distance:</b> ${(h.dist / 1609.34).toFixed(2)} mi
-    `;
-  }, 50);
+  const infoDiv = document.getElementById("hospitalInfo");
+  infoDiv.innerHTML = `
+    <b>Hospital:</b> ${h.name}<br>
+    <b>Distance:</b> ${(h.dist / 1609.34).toFixed(2)} mi
+  `;
 }
+
 
 // stop clicks on infoBox from propagating to the map
 const infoBox = document.getElementById("infoBox");
-L.DomEvent.on(infoBox, 'click', L.DomEvent.stopPropagation);
-L.DomEvent.on(infoBox, 'mousedown', L.DomEvent.stopPropagation);
-L.DomEvent.on(infoBox, 'dblclick', L.DomEvent.stopPropagation);
+L.DomEvent.disableClickPropagation(infoBox);
+L.DomEvent.disableScrollPropagation(infoBox);
 
 
 function runNearestServiceDetection(clickLatLng) {
@@ -853,7 +851,7 @@ layer_Hospitals_Clipped_2.eachLayer(layer => {
   const dist = clickLatLng.distanceTo(hptlLatLng);
   const props = layer.feature?.properties || {};
   const hptlName = props.Name || props.NAME || props.name || props.LandmkName || "Unknown Hospital";
-
+  
   hptlArray.push({ name: hptlName, dist, layer });
 });
 
@@ -930,11 +928,7 @@ const hospitalInfo = document.getElementById("hospitalInfo");
 if (hptlArray.length > 0) {
   currentHptlIndex = 0;
   hospitalSection.style.display = "block";
-  const current = hptlArray[currentHptlIndex];
-  hospitalInfo.innerHTML = `
-    <b>Nearest Hospital:</b> ${current.name}<br>
-    <b>Distance:</b> ${(current.dist / 1609.34).toFixed(2)} mi
-  `;
+  updateHospitalInfo();   // <-- single source of truth
 } else {
   hospitalSection.style.display = "none";
   hospitalInfo.innerHTML = "";
@@ -1097,7 +1091,7 @@ function findWorstAccessPointAdaptive(bounds) {
 
 // Run after all layers are loaded
 setTimeout(() => {
-  // Replace with your actual bounds logic
+  // Replace with actual bounds logic
   const bounds = {
     north: 37.8,
     south: 37.5,
@@ -1127,7 +1121,7 @@ document.getElementById("addressSubmit").addEventListener("click", () => {
       const latlng = L.latLng(lat, lng);
 
       map.setView(latlng, 13); // zoom to location
-      runNearestServiceDetection(latlng); // reuse your click logic
+      runNearestServiceDetection(latlng); // reuse click logic
     })
     .catch(err => {
       console.error("Geocoding error:", err);
@@ -1137,23 +1131,53 @@ document.getElementById("addressSubmit").addEventListener("click", () => {
 
 const backBtn = document.getElementById("hptlBackButton");
 const fwdBtn = document.getElementById("hptlFwdButton");
+const hospitalSection = document.getElementById("hospitalSection");
 
-backBtn.addEventListener("click", (e) => {
-  e.stopPropagation();
-  if (!hptlArray.length) return;
-  currentHptlIndex = (currentHptlIndex - 1 + hptlArray.length) % hptlArray.length;
-  setTimeout(updateHospitalInfo, 20); // small delay for DOM sync, hopefully
-});
+// Prevent the hospital section from propagating events to the map
+L.DomEvent.disableClickPropagation(hospitalSection);
+L.DomEvent.disableScrollPropagation(hospitalSection);
 
-fwdBtn.addEventListener("click", (e) => {
-  e.stopPropagation();
-  if (!hptlArray.length) return;
-  currentHptlIndex = (currentHptlIndex + 1) % hptlArray.length;
-  setTimeout(updateHospitalInfo, 20); // fixes double-click issue
-});
+// Also prevent events on the buttons themselves
+L.DomEvent.disableClickPropagation(backBtn);
+L.DomEvent.disableClickPropagation(fwdBtn);
 
+// Use mousedown instead of click for more reliable triggering
+backBtn.addEventListener("mousedown", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+    
+    if (!hptlArray.length) return;
+    
+    currentHptlIndex = (currentHptlIndex - 1 + hptlArray.length) % hptlArray.length;
+    console.log("Back clicked. New index:", currentHptlIndex);
+    updateHospitalInfo();
+}, true);
 
-        </script>        
+fwdBtn.addEventListener("mousedown", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+    
+    if (!hptlArray.length) return;
+    
+    currentHptlIndex = (currentHptlIndex + 1) % hptlArray.length;
+    console.log("Forward clicked. New index:", currentHptlIndex);
+    updateHospitalInfo();
+}, true);
+
+// Prevent mouseup from bubbling
+backBtn.addEventListener("mouseup", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+}, true);
+
+fwdBtn.addEventListener("mouseup", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+}, true);
+
+</script>        
 <footer id="map-footer"
     style="
         position: fixed;
