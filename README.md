@@ -4,6 +4,7 @@ This repository hosts the source code for the **BRMC Resource Map**, an interact
 
 Built on the **Leaflet.js** mapping library, this tool provides a robust interface for data exploration and navigation.
 
+The boilerplate for this code was created through a QGIS2Web export.
 -----
 
 ## Key Features
