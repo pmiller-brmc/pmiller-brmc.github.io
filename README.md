@@ -50,6 +50,7 @@ To begin, navigate to the **[pmiller-brmc.github.io](https://www.google.com/sear
 ### Map Interaction
 
   * **Search Bar:** Use the search input (top-left) to find locations by address or name.
+  * **Nearest Services:** Described below. Click on the map to find nearest locations to that point.
 
 ### Nearest Services Navigation
 
