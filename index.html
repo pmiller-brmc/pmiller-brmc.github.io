@@ -105,6 +105,10 @@
     .leaflet-tooltip {
       pointer-events: none;
     }
+    .leaflet-popup-content td {
+        word-break: break-word; 
+        white-space: normal;
+    }
     </style>
     <body>
         <!-- SVG Pattern Definition for Broadband Stripes -->
@@ -596,17 +600,51 @@
         bounds_group.addLayer(layer_Libraries_Clipped_10);
         map.addLayer(layer_Libraries_Clipped_10);
 
-                function pop_foodfinder_locations_8(feature, layer) {
-            var popupContent = '<table>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Place Name'] !== null ? autolinker.link(String(feature.properties['Place Name']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                </table>';
+        function pop_foodfinder_locations_8(feature, layer) {
+            // Helper function to create a table row only if the value exists
+            function createRow(label, value, isLink = false) {
+                if (value && value !== "" && value !== "null") {
+                    let displayValue = String(value).replace(/'/g, '\'').toLocaleString();
+                    let content;
+                    
+                    if (isLink === 'website') {
+                        // Creates a clickable link for the website
+                        content = '<a href="' + displayValue + '" target="_blank">' + displayValue + '</a>';
+                    } else if (isLink === 'email') {
+                        // Creates a mailto link for the email
+                        content = '<a href="mailto:' + displayValue + '">' + displayValue + '</a>';
+                    } else {
+                        content = displayValue;
+                    }
+
+                    return '<tr><th scope="row">' + label + '</th><td>' + content + '</td></tr>';
+                }
+                return '';
+            }
+
+            var popupContent = '<table>' +
+                // Address / Place Name
+                createRow('Address', feature.properties['Place Name']) +
+                
+                // Website Link
+                createRow('Website', feature.properties['Website Link'], 'website') +
+                
+                // Phone Number
+                createRow('Phone', feature.properties['Phone']) +
+                
+                // Email
+                createRow('Email', feature.properties['Email'], 'email') +
+                
+                '</table>';
+                
+            // Assuming 'removeEmptyRowsFromPopupContent' is defined elsewhere in your file
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
-			layer.on('popupopen', function(e) {
-				addClassToPopupIfMedia(content, e.popup);
-			});
-			layer.bindPopup(content, { maxHeight: 400 });
+
+            layer.on('popupopen', function(e) {
+                // Assuming 'addClassToPopupIfMedia' is defined elsewhere in your file
+                addClassToPopupIfMedia(content, e.popup);
+            });
+            layer.bindPopup(content, { maxHeight: 400 });
         }
 
         map.createPane('pane_foodfinder_locations_8');
