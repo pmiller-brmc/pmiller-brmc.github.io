@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
     <head>
@@ -27,7 +28,6 @@
             position: absolute;
             top: 10px;
             right: 5%;
-            /* transform: translateX(-50%); */
             background: rgba(255,255,255,0.95);
             border: 1px solid #444;
             border-radius: 8px;
@@ -38,7 +38,6 @@
             min-width: 260px;
             text-align: center;
             }
-            /* Legend Styling (Ensures Alignment) */
             .info.legend {
                 padding: 6px 8px;
                 background: rgba(255,255,255,0.9);
@@ -46,14 +45,13 @@
                 border-radius: 5px;
                 font: 14px/16px Arial, Helvetica, sans-serif;
                 color: #555;
-                /* --- CRITICAL FIX: Ensure block items fit the width --- */
                 line-height: 18px;
+                margin-bottom: 50px;
             }
             .info.legend i {
-                /* --- CRITICAL FIX: Define the color block size and alignment --- */
                 width: 18px;
                 height: 18px;
-                float: left; /* Pulls the color block to the left */
+                float: left;
                 margin-right: 8px;
                 opacity: 0.8;
             }
@@ -65,7 +63,7 @@
             box-shadow: 0 2px 6px rgba(0,0,0,0.25);
             font-family: "Inter", Roboto, Arial, sans-serif;
             white-space: nowrap;
-            pointer-events: none; /* keep tooltip non-interactive */
+            pointer-events: none;
             }
             .address-search {
             position: absolute;
@@ -83,7 +81,6 @@
             width: 100%;
             box-sizing: border-box;
             }
-
             #addressSubmit {
             padding: 10px;
             font-size: 14px;
@@ -91,33 +88,34 @@
             box-sizing: border-box;
             cursor: pointer;
             }
-
+            /* CSS-based stripe pattern for broadband overlay */
+            .broadband-stripe {
+                fill: url(#stripe-pattern) !important;
+            }           
             </style>
     </head>
     <style>
-    /* Allow ALL interactive overlay layers to be clicked through */
-/* keep markers interactive */
-.leaflet-interactive,
-.leaflet-marker-icon {
-  pointer-events: auto !important;
-}
-
-/* disable pointer events only for large polygon fills (so they don't block point hovers) */
-.leaflet-overlay-pane path:not([data-tooltip="true"]):not(.leaflet-clickable) {
-  pointer-events: none !important;
-}
-
-/* tooltips should not block mouse interaction */
-.leaflet-tooltip {
-  pointer-events: none;
-}
-
-
-    /* IMPORTANT EXCEPTION: If a specific custom control or tool 
-    needs to be clickable (like a legend or button), 
-    may need to add exceptions here later. */
+    .leaflet-interactive,
+    .leaflet-marker-icon {
+      pointer-events: auto !important;
+    }
+    .leaflet-overlay-pane path:not([data-tooltip="true"]):not(.leaflet-clickable) {
+      pointer-events: none !important;
+    }
+    .leaflet-tooltip {
+      pointer-events: none;
+    }
     </style>
     <body>
+        <!-- SVG Pattern Definition for Broadband Stripes -->
+        <svg width="0" height="0">
+            <defs>
+                <pattern id="stripe-pattern" patternUnits="userSpaceOnUse" width="8" height="8" patternTransform="rotate(45)">
+                    <line x1="0" y1="0" x2="0" y2="8" stroke="red" stroke-width="2" opacity="0.6"/>
+                </pattern>
+            </defs>
+        </svg>
+        
         <div id="addressSearch" class="address-search">
             <input type="type" id="addressInput" placeholder="Enter an address..."/>
             <button id="addressSubmit">Find Nearest Services</button>
@@ -129,11 +127,9 @@
                 <button id="hptlFwdButton" style="margin-left:6px;">&#x25B6;</button>
             </div>
             <div id="otherInfo"></div>
-            </div>
-
         </div>
-        <div id="map">
-        </div>
+        <div id="map"></div>
+        
         <script src="js/qgis2web_expressions.js"></script>
         <script src="js/leaflet.js"></script>
         <script src="https://unpkg.com/leaflet-pip@latest/leaflet-pip.min.js"></script>
@@ -141,7 +137,6 @@
         <script src="js/multi-style-layer.js"></script>
         <script src="js/leaflet-svg-shape-markers.min.js"></script>
         <script src="js/leaflet.rotatedMarker.js"></script>
-        <script src="js/leaflet.pattern.js"></script>
         <script src="js/leaflet-hash.js"></script>
         <script src="js/Autolinker.min.js"></script>
         <script src="js/rbush.min.js"></script>
@@ -170,7 +165,7 @@
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
-        // remove popup's row if "visible-with-data"
+        
         function removeEmptyRowsFromPopupContent(content, feature) {
          var tempDiv = document.createElement('div');
          tempDiv.innerHTML = content;
@@ -184,7 +179,7 @@
          }
          return tempDiv.innerHTML;
         }
-        // modify popup if contains media
+        
         function addClassToPopupIfMedia(content, popup) {
             var tempDiv = document.createElement('div');
             tempDiv.innerHTML = content;
@@ -230,12 +225,14 @@
                 popup._contentNode.classList.remove('media');
             }
         }
+        
         var zoomControl = L.control.zoom({
             position: 'topleft'
         }).addTo(map);
         var bounds_group = new L.featureGroup([]);
         function setBounds() {
         }
+        
         map.createPane('pane_GoogleMaps_0');
         map.getPane('pane_GoogleMaps_0').style.zIndex = 400;
         var layer_GoogleMaps_0 = L.tileLayer('https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
@@ -247,8 +244,10 @@
             minNativeZoom: 0,
             maxNativeZoom: 19
         });
-        layer_GoogleMaps_0;
+
+        map.options.renderer = L.svg();
         map.addLayer(layer_GoogleMaps_0);
+
         function pop_Hospitals_Clipped_2(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
@@ -286,10 +285,10 @@
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
-			layer.on('popupopen', function(e) {
-				addClassToPopupIfMedia(content, e.popup);
-			});
-			layer.bindPopup(content, { maxHeight: 400 });
+            layer.on('popupopen', function(e) {
+                addClassToPopupIfMedia(content, e.popup);
+            });
+            layer.bindPopup(content, { maxHeight: 400 });
         }
 
         map.createPane('pane_Hospitals_Clipped_2');
@@ -304,7 +303,7 @@
             onEachFeature: pop_Hospitals_Clipped_2,
             pointToLayer: function (feature, latlng) {
                 var hospitalIcon = L.icon({
-                    iconUrl: 'hospital_13298007.png', // hospital icon
+                    iconUrl: 'hospital_13298007.png',
                     iconSize: [24, 24],
                     iconAnchor: [12, 12],
                     popupAnchor: [0, -12]
@@ -314,31 +313,18 @@
                 if (marker._path) {
                 marker._path.setAttribute("data-tooltip", "true");
                 }
-                // Add hover tooltip
                 marker.bindTooltip(feature.properties.LandmkName, {
                 permanent: false,
                 className: 'my-tooltip',
                 direction: "top",
                 opacity: 0.9
                 });
-                // Return unchanged
                 return marker;
             },
         });
         bounds_group.addLayer(layer_Hospitals_Clipped_2);
         map.addLayer(layer_Hospitals_Clipped_2);
-        function pop_union_3(feature, layer) {
-            var popupContent = '<table>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['NAME'] !== null ? autolinker.link(String(feature.properties['NAME']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                </table>';
-            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
-			layer.on('popupopen', function(e) {
-				addClassToPopupIfMedia(content, e.popup);
-			});
-			layer.bindPopup(content, { maxHeight: 400 });
-        }
+        
         function pop_filtered_countiescounties_4(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
@@ -346,10 +332,10 @@
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
-			layer.on('popupopen', function(e) {
-				addClassToPopupIfMedia(content, e.popup);
-			});
-			layer.bindPopup(content, { maxHeight: 400 });
+            layer.on('popupopen', function(e) {
+                addClassToPopupIfMedia(content, e.popup);
+            });
+            layer.bindPopup(content, { maxHeight: 400 });
         }
 
         function style_filtered_countiescounties_4_0() {
@@ -373,6 +359,7 @@
         });
         bounds_group.addLayer(layer_filtered_countiescounties_4);
         map.addLayer(layer_filtered_countiescounties_4);
+        
         function pop_CensusTractsbyFamilyPoverty_5(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
@@ -382,131 +369,110 @@
                         <td colspan="2">' + (feature.properties['poverty_va_tracts_S1702_C02_001E'] !== null ? autolinker.link(String(feature.properties['poverty_va_tracts_S1702_C02_001E']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['sdoh_data_cong_Year'] !== null ? autolinker.link(String(feature.properties['sdoh_data_cong_Year']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['sdoh_data_cong_Domain'] !== null ? autolinker.link(String(feature.properties['sdoh_data_cong_Domain']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['sdoh_data_cong_Measure'] !== null ? autolinker.link(String(feature.properties['sdoh_data_cong_Measure']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['sdoh_data_cong_Tract'] !== null ? autolinker.link(String(feature.properties['sdoh_data_cong_Tract']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['sdoh_data_cong_County'] !== null ? autolinker.link(String(feature.properties['sdoh_data_cong_County']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['sdoh_data_cong_State'] !== null ? autolinker.link(String(feature.properties['sdoh_data_cong_State']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['broadband_pct_HHbroadband_sub_ACS17_21'] !== null ? autolinker.link(String(feature.properties['broadband_pct_HHbroadband_sub_ACS17_21']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
-			layer.on('popupopen', function(e) {
-				addClassToPopupIfMedia(content, e.popup);
-			});
-			layer.bindPopup(content, { maxHeight: 400 });
+            layer.on('popupopen', function(e) {
+                addClassToPopupIfMedia(content, e.popup);
+            });
+            layer.bindPopup(content, { maxHeight: 400 });
         }
 
+        // --- 1. Poverty Color Style ---
         function style_CensusTractsbyFamilyPoverty_5_0(feature) {
-            if (feature.properties['poverty_va_tracts_S1702_C02_001E'] >= 1.000000 && feature.properties['poverty_va_tracts_S1702_C02_001E'] <= 5.100000 ) {
-                return {
-                pane: 'pane_SelectedTracts',
+            let style = {
                 opacity: 1,
                 color: 'rgba(0,0,0,1.0)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
-                weight: 2.0, 
+                weight: 2.0,
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(89,255,136,0.4)',
-                interactive: false,
+                fillColor: 'rgba(0,0,0,0)', 
+                interactive: false
+            };
+
+            const pov = feature.properties['poverty_va_tracts_S1702_C02_001E'];
+            
+            if (pov >= 1.0 && pov <= 5.1) {
+                style.fillColor = 'rgba(89,255,136,0.4)';
+            } else if (pov > 5.1 && pov <= 7.92) {
+                style.fillColor = 'rgba(130,191,102,0.4)';
+            } else if (pov > 7.92 && pov <= 8.78) {
+                style.fillColor = 'rgba(172,128,68,0.4)';
+            } else if (pov > 8.78 && pov <= 11.94) {
+                style.fillColor = 'rgba(213,64,34,0.4)';
+            } else if (pov > 11.94 && pov <= 22.7) {
+                style.fillColor = 'rgba(255,0,0,0.4)';
             }
-            }
-            if (feature.properties['poverty_va_tracts_S1702_C02_001E'] >= 5.100000 && feature.properties['poverty_va_tracts_S1702_C02_001E'] <= 7.920000 ) {
-                return {
-                pane: 'pane_SelectedTracts',
-                opacity: 1,
-                color: 'rgba(0,0,0,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 2.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(130,191,102,0.4)',
-                interactive: false,
-            }
-            }
-            if (feature.properties['poverty_va_tracts_S1702_C02_001E'] >= 7.920000 && feature.properties['poverty_va_tracts_S1702_C02_001E'] <= 8.780000 ) {
-                return {
-                pane: 'pane_SelectedTracts',
-                opacity: 1,
-                color: 'rgba(0,0,0,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 2.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(172,128,68,0.4)',
-                interactive: false,
-            }
-            }
-            if (feature.properties['poverty_va_tracts_S1702_C02_001E'] >= 8.780000 && feature.properties['poverty_va_tracts_S1702_C02_001E'] <= 11.940000 ) {
-                return {
-                pane: 'pane_SelectedTracts',
-                opacity: 1,
-                color: 'rgba(0,0,0,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 2.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(213,64,34,0.4)',
-                interactive: false,
-            }
-            }
-            if (feature.properties['poverty_va_tracts_S1702_C02_001E'] >= 11.940000 && feature.properties['poverty_va_tracts_S1702_C02_001E'] <= 22.700000 ) {
-                return {
-                pane: 'pane_SelectedTracts',
-                opacity: 1,
-                color: 'rgba(0,0,0,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 2.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(255,0,0,0.4)',
-                interactive: false,
-            }
-            }
+            return style;
         }
+
+        // --- 2. Broadband Overlay Setup (CSS-based stripes) ---
+        map.createPane('pane_Broadband');
+        map.getPane('pane_Broadband').style.zIndex = 406;
+        map.getPane('pane_Broadband').style['mix-blend-mode'] = 'normal';
+        map.getPane('pane_Broadband').style.pointerEvents = 'none';
+
+        function style_Broadband_Overlay(feature) {
+            const bb = feature.properties['broadband_pct_HHbroadband_sub_ACS17_21'];
+            
+            // Debug log
+            if (bb !== null && bb !== undefined && bb <= 75) {
+                console.log("Low broadband area found:", bb);
+            }
+            
+            if (bb !== null && bb !== undefined && bb <= 75) { 
+                return {
+                    pane: 'pane_Broadband',
+                    stroke: false,
+                    fill: true,
+                    fillColor: 'red',
+                    fillOpacity: 0.3,
+                    interactive: false,
+                    className: 'broadband-stripe'
+                };
+            }
+            return {
+                stroke: false,
+                fill: false,
+                interactive: false
+            };
+        }
+
+        // --- 3. Create Poverty Layer ---
         map.createPane('pane_CensusTractsbyFamilyPoverty_5');
         map.getPane('pane_CensusTractsbyFamilyPoverty_5').style.zIndex = 405;
-        map.createPane('pane_SelectedTracts');
-        map.getPane('pane_SelectedTracts').style.zIndex = 406;
         map.getPane('pane_CensusTractsbyFamilyPoverty_5').style['mix-blend-mode'] = 'normal';
+        
         var layer_CensusTractsbyFamilyPoverty_5 = new L.geoJson(json_CensusTractsbyFamilyPoverty_5, {
             attribution: '',
             interactive: false,
             dataVar: 'json_CensusTractsbyFamilyPoverty_5',
             layerName: 'layer_CensusTractsbyFamilyPoverty_5',
             pane: 'pane_CensusTractsbyFamilyPoverty_5',
+            renderer: L.svg(), 
             onEachFeature: pop_CensusTractsbyFamilyPoverty_5,
-            style: style_CensusTractsbyFamilyPoverty_5_0,
+            style: style_CensusTractsbyFamilyPoverty_5_0
         });
         bounds_group.addLayer(layer_CensusTractsbyFamilyPoverty_5);
         map.addLayer(layer_CensusTractsbyFamilyPoverty_5);
 
-        // Cluster only VERY close points
-        var healthCluster = L.markerClusterGroup({
-            // Defines how close points must be to cluster (in pixels)
-            maxClusterRadius: 20,   // VERY close (~20px)
+        // --- 4. Create Broadband Overlay Layer ---
+        var layer_Broadband_Overlay = new L.geoJson(json_CensusTractsbyFamilyPoverty_5, {
+            pane: 'pane_Broadband',
+            style: style_Broadband_Overlay,
+            interactive: false
         });
+        map.addLayer(layer_Broadband_Overlay);
+        bounds_group.addLayer(layer_Broadband_Overlay);
 
+        // Health Centers with clustering
+        var healthCluster = L.markerClusterGroup({
+            maxClusterRadius: 20,
+        });
 
         function pop_Health_Centers_Clipped_7(feature, layer) {
             var popupContent = '<table>\
@@ -563,14 +529,12 @@
                 if (marker._path) {
                 marker._path.setAttribute("data-tooltip", "true");
                 }
-                // Add hover tooltip
                 marker.bindTooltip(feature.properties['Health Cen'], {
                 permanent: false,
                 className: 'my-tooltip',
                 direction: "top",
                 opacity: 0.9
                 });
-                // Return unchanged
                 return marker;
             },
         });
@@ -777,6 +741,40 @@ povertyLegend.onAdd = function (map) {
 };
 
 povertyLegend.addTo(map);
+
+
+const masterLegend = L.control({ position: "bottomleft" });
+
+masterLegend.onAdd = function () {
+    const div = L.DomUtil.create("div", "info legend");
+
+    div.innerHTML = `
+        <b>Legend</b><br>
+
+        <!-- Broadband -->
+        <div style="margin-top:6px;">
+            <svg width="18" height="18">
+                <rect width="18" height="18" fill="url(#stripe-pattern)" opacity="0.8" />
+            </svg>
+            <span>Broadband < 75% (Red Grid)</span>
+        </div>
+
+        <hr style="margin:6px 0;">
+
+        <!-- Icons -->
+        <div><img src="hospital_13298007.png" width="18"> Hospital</div>
+        <div><img src="hospital_9707153.png" width="18"> Health Center</div>
+        <div><img src="icons8-library-48.png" width="18"> Library</div>
+        <div><img src="icons8-food-bar-48.png" width="18"> Food Access</div>
+        <div><img src="icons8-unity-64.png" width="20"> Outreach Partner</div>
+    `;
+
+    return div;
+};
+
+masterLegend.addTo(map);
+
+
 // Reset labels for filtered counties
 function resetCountyLabels() {
     resetLabels([layer_filtered_countiescounties_4]);
@@ -1065,7 +1063,7 @@ function findWorstAccessPointAdaptive(bounds) {
   // Step 5: Display result
   if (maxPoint) {
     const marker = L.marker(maxPoint, {
-    interactive: true // ensures the marker responds to clicks
+    interactive: true, // ensures the marker responds to clicks
     }).addTo(map);
 
     const popupContent = `
