@@ -9,14 +9,9 @@ Built on the **Leaflet.js** mapping library, this tool provides a robust interfa
 ## Key Features
 
   * **Interactive Mapping:** A responsive and modern interface built on the Leaflet framework.
-  * **Dynamic Resource Layers:** Toggle the visibility of different point data layers, including:
-      * Health Centers (Clustered)
-      * Libraries (Clustered)
-      * Hospitals (Clustered)
   * **Marker Clustering:** Uses **Leaflet.markercluster** for efficient management and display of dense data points.
-  * **Geocoding Search:** Integrated search functionality powered by **Leaflet-Photon** for finding addresses and specific locations using OpenStreetMap data.
-  * **Nearest Service Navigation:** Upon clicking any point on the map, the bottom navigation panel populates with the closest services, allowing users to cycle through them.
-  * **User Geolocation:** Automatically locate the user on the map for easy context.
+  * **Geocoding Search:** Integrated search functionality powered by **Leaflet-Photon** for finding addresses and specific locations.
+  * **Nearest Service Navigation:** Upon clicking any point on the map, the navigation panel populates with the closest services, allowing users to cycle through them.
 
 -----
 
@@ -54,14 +49,12 @@ To begin, navigate to the **[pmiller-brmc.github.io](https://www.google.com/sear
 ### Map Interaction
 
   * **Search Bar:** Use the search input (top-left) to find locations by address or name.
-  * **Layer Control:** Click the layer icon (usually top-right) to toggle the visibility of service layers (Health Centers, Libraries, Hospitals) and change the base map.
-  * **Geolocation:** Click the [Location Icon] icon to find and center the map on your current geographic location.
 
 ### Nearest Services Navigation
 
   * Click anywhere on the map to set a target point.
   * The bottom navigation bar will display information about the closest Health Center, Library, and Hospital to that clicked point.
-  * Use the **"Back"** and **"Forward"** buttons within each service container to cycle through the list of nearest resources.
+  * Use the **Back** and **Forward** buttons to move between close hospital locations
 
 -----
 
