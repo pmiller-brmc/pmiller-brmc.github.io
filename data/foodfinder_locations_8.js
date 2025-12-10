@@ -1,39 +1,649 @@
 var json_foodfinder_locations_8 = {
 "type": "FeatureCollection",
-"name": "foodfinder_locations_8",
-"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
-"features": [
-{ "type": "Feature", "properties": { "ID": "73988", "Address": "9235 Rockfish River Rd., Schuyler, VA, 22969", "Latitude": 37.7963693, "Longitude": -78.7335965, "Website Link": null, "Phone": "434-263-7760", "Email": null, "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/73988", "Place Name": "9235 Rockfish River Rd., Schuyler, VA, 22969" }, "geometry": { "type": "Point", "coordinates": [ -78.7335965, 37.7963693 ] } },
-{ "type": "Feature", "properties": { "ID": "326434", "Address": "6153 Thomas Nelson Highway, Lovingston, VA, 22949", "Latitude": 37.8073105, "Longitude": -78.860002, "Website Link": "https://www.nelsonheritagecenter.com", "Phone": "434-760-2900", "Email": null, "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/326434", "Place Name": "6153 Thomas Nelson Highway, Lovingston, VA, 22949" }, "geometry": { "type": "Point", "coordinates": [ -78.860002, 37.8073105 ] } },
-{ "type": "Feature", "properties": { "ID": "127843", "Address": "9890 Thomas Nelson Hwy., Woods Mill, VA, 22949", "Latitude": 37.8073105, "Longitude": -78.860002, "Website Link": "https://www.nelsoncountypantry.org", "Phone": "434-263-6923", "Email": null, "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/127843", "Place Name": "9890 Thomas Nelson Hwy., Woods Mill, VA, 22949" }, "geometry": { "type": "Point", "coordinates": [ -78.860002, 37.8073105 ] } },
-{ "type": "Feature", "properties": { "ID": "326403", "Address": "1653 Thomas Nelson Highway, Nelson Heritage Center, Arrington, VA, 22922", "Latitude": 37.678643, "Longitude": -78.951552, "Website Link": "https://www.brafb.org/about-us/how-we-work/programs/mobile-food-pantry/", "Phone": "434-242-2207", "Email": null, "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/326403", "Place Name": "1653 Thomas Nelson Highway, Nelson Heritage Center, Arrington, VA, 22922" }, "geometry": { "type": "Point", "coordinates": [ -78.951552, 37.678643 ] } },
-{ "type": "Feature", "properties": { "ID": "326610", "Address": "111 Highview Drive, Madison Heights, VA, 24521", "Latitude": 37.4773676, "Longitude": -79.1172746, "Website Link": "https://www.monacannation.com/monacan-food-bank.html", "Phone": "434-979-9180", "Email": null, "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/326610", "Place Name": "111 Highview Drive, Madison Heights, VA, 24521" }, "geometry": { "type": "Point", "coordinates": [ -79.1172746, 37.4773676 ] } },
-{ "type": "Feature", "properties": { "ID": "326406", "Address": "3768 South Amherst Highway, Madison Heights, VA, 24572", "Latitude": 37.4774747, "Longitude": -79.1186873, "Website Link": "https://www.faithmh.org/events/event/2/food-pantry/2022-04-16", "Phone": "434-546-0457", "Email": null, "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/326406", "Place Name": "3768 South Amherst Highway, Madison Heights, VA, 24572" }, "geometry": { "type": "Point", "coordinates": [ -79.1186873, 37.4774747 ] } },
-{ "type": "Feature", "properties": { "ID": "127842", "Address": "1653 Thomas Nelson Hwy., Oak Hill Baptist Church, Arrington, VA, 22922", "Latitude": 37.678643, "Longitude": -78.951552, "Website Link": null, "Phone": "540-248-3663", "Email": "info@brafb.org", "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/127842", "Place Name": "1653 Thomas Nelson Hwy., Oak Hill Baptist Church, Arrington, VA, 22922" }, "geometry": { "type": "Point", "coordinates": [ -78.951552, 37.678643 ] } },
-{ "type": "Feature", "properties": { "ID": "127740", "Address": "226 E. Perch Rd., Monroe, VA, 24574", "Latitude": 37.5220922, "Longitude": -79.2282868, "Website Link": "https://chestnutgrovebaptist.org", "Phone": "434-384-9298", "Email": null, "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/127740", "Place Name": "226 E. Perch Rd., Monroe, VA, 24574" }, "geometry": { "type": "Point", "coordinates": [ -79.2282868, 37.5220922 ] } },
-{ "type": "Feature", "properties": { "ID": "127733", "Address": "2209 Buffalo Springs Tpke., Across the road from the main worship building., Monroe, VA, 24574", "Latitude": 37.610654, "Longitude": -79.239766, "Website Link": "http://www.newprospectbaptistva.org/", "Phone": "434-238-5527", "Email": "newprospectbc@gmail.com", "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/127733", "Place Name": "2209 Buffalo Springs Tpke., Across the road from the main worship building., Monroe, VA, 24574" }, "geometry": { "type": "Point", "coordinates": [ -79.239766, 37.610654 ] } },
-{ "type": "Feature", "properties": { "ID": "326614", "Address": "243 Jackson Lane, Concord, VA, 24538", "Latitude": 37.4437581, "Longitude": -78.9745961, "Website Link": "https://www.google.com/search?q=http://www.elderlyoutreach.org/", "Phone": "434-238-2638", "Email": null, "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/326614", "Place Name": "243 Jackson Lane, Concord, VA, 24538" }, "geometry": { "type": "Point", "coordinates": [ -78.9745961, 37.4437581 ] } },
-{ "type": "Feature", "properties": { "ID": "300520", "Address": "2490 Chestnut Grove Church Rd., Appomattox, VA, 24522", "Latitude": 37.245337, "Longitude": -78.780053, "Website Link": null, "Phone": "434-352-0316", "Email": null, "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/300520", "Place Name": "2490 Chestnut Grove Church Rd., Appomattox, VA, 24522" }, "geometry": { "type": "Point", "coordinates": [ -78.780053, 37.245337 ] } },
-{ "type": "Feature", "properties": { "ID": "127736", "Address": "611 Chestnut Grove Rd., Chestnut Grove Baptist Church, Appomattox, VA, 24522", "Latitude": 37.257533, "Longitude": -78.807721, "Website Link": "https://www.facebook.com/MissionaryFoodBank", "Phone": null, "Email": "sodwheeler@aol.com", "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/127736", "Place Name": "611 Chestnut Grove Rd., Chestnut Grove Baptist Church, Appomattox, VA, 24522" }, "geometry": { "type": "Point", "coordinates": [ -78.807721, 37.257533 ] } },
-{ "type": "Feature", "properties": { "ID": "326332", "Address": "735 McCulloch Street, Glasgow, VA, 24555", "Latitude": 37.634396, "Longitude": -79.4499952, "Website Link": "https://www.google.com/search?q=https://www.highbridgechurchva.org/natural-bridge-glasgow-food-pantry/", "Phone": "540-291-2578", "Email": null, "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/326332", "Place Name": "735 McCulloch Street, Glasgow, VA, 24555" }, "geometry": { "type": "Point", "coordinates": [ -79.4499952, 37.634396 ] } },
-{ "type": "Feature", "properties": { "ID": "73946", "Address": "797 Spottswood Rd., Steeles Tavern, VA, 24476", "Latitude": 37.9577424, "Longitude": -79.2166357, "Website Link": null, "Phone": "540-377-5708", "Email": null, "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/73946", "Place Name": "797 Spottswood Rd., Steeles Tavern, VA, 24476" }, "geometry": { "type": "Point", "coordinates": [ -79.2166357, 37.9577424 ] } },
-{ "type": "Feature", "properties": { "ID": "75645", "Address": "1303 Mt. Zion Rd., Red House, VA, 23963", "Latitude": 37.1793198, "Longitude": -78.8022277, "Website Link": null, "Phone": "434-248-6823", "Email": null, "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/75645", "Place Name": "1303 Mt. Zion Rd., Red House, VA, 23963" }, "geometry": { "type": "Point", "coordinates": [ -78.8022277, 37.1793198 ] } },
-{ "type": "Feature", "properties": { "ID": "127759", "Address": "12945 W. James Anderson Hwy., Buckingham, VA, 23921", "Latitude": 37.5498491, "Longitude": -78.5578855, "Website Link": null, "Phone": "434-665-6206", "Email": null, "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/127759", "Place Name": "12945 W. James Anderson Hwy., Buckingham, VA, 23921" }, "geometry": { "type": "Point", "coordinates": [ -78.5578855, 37.5498491 ] } },
-{ "type": "Feature", "properties": { "ID": "127736", "Address": "611 Chestnut Grove Rd., Chestnut Grove Baptist Church, Appomattox, VA, 24522", "Latitude": 37.257533, "Longitude": -78.807721, "Website Link": "https://www.facebook.com/MissionaryFoodBank", "Phone": null, "Email": "sodwheeler@aol.com", "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/127736", "Place Name": "611 Chestnut Grove Rd., Chestnut Grove Baptist Church, Appomattox, VA, 24522" }, "geometry": { "type": "Point", "coordinates": [ -78.807721, 37.257533 ] } },
-{ "type": "Feature", "properties": { "ID": "300520", "Address": "2490 Chestnut Grove Church Rd., Appomattox, VA, 24522", "Latitude": 37.245337, "Longitude": -78.780053, "Website Link": null, "Phone": "434-352-0316", "Email": null, "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/300520", "Place Name": "2490 Chestnut Grove Church Rd., Appomattox, VA, 24522" }, "geometry": { "type": "Point", "coordinates": [ -78.780053, 37.245337 ] } },
-{ "type": "Feature", "properties": { "ID": "31900", "Address": "2523 Craigs Store Rd., Building adjacent to Holy Cross church, Afton, VA, 22920", "Latitude": 37.967426, "Longitude": -78.767201, "Website Link": null, "Phone": "540-456-6334", "Email": "cinki124@gmail.com", "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/31900", "Place Name": "2523 Craigs Store Rd., Building adjacent to Holy Cross church, Afton, VA, 22920" }, "geometry": { "type": "Point", "coordinates": [ -78.767201, 37.967426 ] } },
-{ "type": "Feature", "properties": { "ID": "127874", "Address": "1101 Albemarle Ave., Waynesboro, VA, 22980", "Latitude": 38.051639, "Longitude": -78.903547, "Website Link": "https://www.mmcogic.org/bread-of-heaven", "Phone": "540-221-4172", "Email": null, "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/127874", "Place Name": "1101 Albemarle Ave., Waynesboro, VA, 22980" }, "geometry": { "type": "Point", "coordinates": [ -78.903547, 38.051639 ] } },
-{ "type": "Feature", "properties": { "ID": "326612", "Address": "2835 Lyndhurst Road, Lyndhurst, VA, 22980", "Latitude": 38.033223, "Longitude": -78.944428, "Website Link": "http://www.lyndhurstumc.com", "Phone": "540-943-8057", "Email": null, "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/326612", "Place Name": "2835 Lyndhurst Drive, Lyndhurst, VA, 22980" }, "geometry": { "type": "Point", "coordinates": [ -78.944428, 38.033223 ] } },
-{ "type": "Feature", "properties": { "ID": "127748", "Address": "2857 Stuarts Draft Highway, Broadmoor Shopping Center, Stuarts Draft, VA, 24477", "Latitude": 38.045217, "Longitude": -79.037802, "Website Link": "https://www.rejoicinglifechurch.com/content.cfm?id=148&ministry_id=1", "Phone": "540-337-2447", "Email": null, "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/127748", "Place Name": "2857 Stuarts Draft Highway, Broadmoor Shopping Center, Stuarts Draft, VA, 24477" }, "geometry": { "type": "Point", "coordinates": [ -79.037802, 38.045217 ] } },
-{ "type": "Feature", "properties": { "ID": "73990", "Address": "2179 Stuarts Draft Hwy., Stuarts Draft, VA, 24477", "Latitude": 38.0300636, "Longitude": -79.0558264, "Website Link": "http://www.calvarydraft.com", "Phone": "540-337-2980", "Email": null, "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/73990", "Place Name": "2179 Stuarts Draft Hwy., Stuarts Draft, VA, 24477" }, "geometry": { "type": "Point", "coordinates": [ -79.0558264, 38.0300636 ] } },
-{ "type": "Feature", "properties": { "ID": "74007", "Address": "Restoration Ministries - VA", "Latitude": 13.1475348, "Longitude": -61.2070557, "Website Link": null, "Phone": "540-942-4544", "Email": null, "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/74007", "Place Name": "Restoration Ministries - VA" }, "geometry": { "type": "Point", "coordinates": [ -61.2070557, 13.1475348 ] } },
-{ "type": "Feature", "properties": { "ID": "327112", "Address": "801 Howardsville Turnpike, Stuarts Draft, VA, 24477", "Latitude": 37.9977024, "Longitude": -79.0036003, "Website Link": null, "Phone": "540-337-2022", "Email": null, "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/327112", "Place Name": "801 Howardsville Turnpike, Stuarts Draft, VA, 24477" }, "geometry": { "type": "Point", "coordinates": [ -79.0036003, 37.9977024 ] } },
-{ "type": "Feature", "properties": { "ID": "73946", "Address": "797 Spottswood Rd., Steeles Tavern, VA, 24476", "Latitude": 37.9577424, "Longitude": -79.2166357, "Website Link": null, "Phone": "540-377-5708", "Email": null, "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/73946", "Place Name": "797 Spottswood Rd., Steeles Tavern, VA, 24476" }, "geometry": { "type": "Point", "coordinates": [ -79.2166357, 37.9577424 ] } },
-{ "type": "Feature", "properties": { "ID": "326471", "Address": "401 Florida Ave., Lynchburg, VA, 24504", "Latitude": 37.4050467, "Longitude": -79.1364024, "Website Link": "https://www.google.com/search?q=https://www.facebook.com/White-Rock-Baptist-Church-1531540067095712/", "Phone": "1531540067", "Email": null, "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/326471", "Place Name": "401 Florida Ave., Lynchburg, VA, 24504" }, "geometry": { "type": "Point", "coordinates": [ -79.1364024, 37.4050467 ] } },
-{ "type": "Feature", "properties": { "ID": "327114", "Address": "1310 Church Street, Lynchburg, VA, 24504", "Latitude": 37.410798, "Longitude": -79.1398029, "Website Link": "https://www.thelhcc.org/", "Phone": "434-847-5050", "Email": null, "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/327114", "Place Name": "1310 Church Street, Lynchburg, VA, 24504" }, "geometry": { "type": "Point", "coordinates": [ -79.1398029, 37.410798 ] } },
-{ "type": "Feature", "properties": { "ID": "127737", "Address": "329 Main St., Madison Heights, VA, 24572", "Latitude": 37.4216511, "Longitude": -79.1266282, "Website Link": null, "Phone": "434-846-5914", "Email": null, "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/127737", "Place Name": "329 Main St., Madison Heights, VA, 24572" }, "geometry": { "type": "Point", "coordinates": [ -79.1266282, 37.4216511 ] } },
-{ "type": "Feature", "properties": { "ID": "72660", "Address": "131 Old Colony Rd., Madison Heights, VA, 24572", "Latitude": 37.4201753, "Longitude": -79.1218404, "Website Link": null, "Phone": "434-528-0325", "Email": null, "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/72660", "Place Name": "131 Old Colony Rd., Madison Heights, VA, 24572" }, "geometry": { "type": "Point", "coordinates": [ -79.1218404, 37.4201753 ] } },
-{ "type": "Feature", "properties": { "ID": "302071", "Address": "5341 S. Amherst Hwy., Madison Heights, VA, 24572", "Latitude": 37.4256382, "Longitude": -79.1303334, "Website Link": null, "Phone": "434-846-3028", "Email": null, "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/302071", "Place Name": "5341 S. Amherst Hwy., Madison Heights, VA, 24572" }, "geometry": { "type": "Point", "coordinates": [ -79.1303334, 37.4256382 ] } },
-{ "type": "Feature", "properties": { "ID": "127806", "Address": "350 Spotswood Dr., Lexington, VA, 24450", "Latitude": 37.7791848, "Longitude": -79.4431596, "Website Link": "http://www.raralex.org/faq/", "Phone": "540-463-6943", "Email": "office@raralex.org", "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/127806", "Place Name": "350 Spotswood Dr., Lexington, VA, 24450" }, "geometry": { "type": "Point", "coordinates": [ -79.4431596, 37.7791848 ] } }
-]
-}
+  "name": "foodfinder_locations_8",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": "73988",
+        "Address": "9235 Rockfish River Rd., Schuyler, VA, 22969",
+        "Latitude": 37.7963693,
+        "Longitude": -78.7335965,
+        "Website Link": null,
+        "Phone": "434-263-7760",
+        "Email": null,
+        "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/73988",
+        "Place Name": "9235 Rockfish River Rd., Schuyler, VA, 22969"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.7335965,
+          37.7963693
+        ]
+      }
+    },
+    
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": "326434",
+        "Address": "6153 Thomas Nelson Highway, Lovingston, VA, 22949",
+        "Latitude": 37.8073105,
+        "Longitude": -78.860002,
+        "Website Link": "https://www.nelsonheritagecenter.com",
+        "Phone": "434-760-2900",
+        "Email": null,
+        "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/326434",
+        "Place Name": "6153 Thomas Nelson Highway, Lovingston, VA, 22949"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.860002,
+          37.8073105
+        ]
+      }
+    },
+    
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": "127843",
+        "Address": "9890 Thomas Nelson Hwy., Woods Mill, VA, 22949",
+        "Latitude": 37.8073105,
+        "Longitude": -78.860002,
+        "Website Link": "https://www.nelsoncountypantry.org",
+        "Phone": "434-263-6923",
+        "Email": null,
+        "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/127843",
+        "Place Name": "9890 Thomas Nelson Hwy., Woods Mill, VA, 22949"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.860002,
+          37.8073105
+        ]
+      }
+    },
+    
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": "326403",
+        "Address": "1653 Thomas Nelson Highway, Nelson Heritage Center, Arrington, VA, 22922",
+        "Latitude": 37.678643,
+        "Longitude": -78.951552,
+        "Website Link": "https://www.brafb.org/about-us/how-we-work/programs/mobile-food-pantry/",
+        "Phone": "434-242-2207",
+        "Email": null,
+        "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/326403",
+        "Place Name": "1653 Thomas Nelson Highway, Nelson Heritage Center, Arrington, VA, 22922"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.951552,
+          37.678643
+        ]
+      }
+    },
+    
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": "326610",
+        "Address": "111 Highview Drive, Madison Heights, VA, 24521",
+        "Latitude": 37.4773676,
+        "Longitude": -79.1172746,
+        "Website Link": "https://www.monacannation.com/monacan-food-bank.html",
+        "Phone": "434-979-9180",
+        "Email": null,
+        "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/326610",
+        "Place Name": "111 Highview Drive, Madison Heights, VA, 24521"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.1172746,
+          37.4773676
+        ]
+      }
+    },
+    
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": "326406",
+        "Address": "3768 South Amherst Highway, Madison Heights, VA, 24572",
+        "Latitude": 37.4774747,
+        "Longitude": -79.1186873,
+        "Website Link": "https://www.faithmh.org/events/event/2/food-pantry/2022-04-16",
+        "Phone": "434-546-0457",
+        "Email": null,
+        "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/326406",
+        "Place Name": "3768 South Amherst Highway, Madison Heights, VA, 24572"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.1186873,
+          37.4774747
+        ]
+      }
+    },
+    
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": "127842",
+        "Address": "1653 Thomas Nelson Hwy., Oak Hill Baptist Church, Arrington, VA, 22922",
+        "Latitude": 37.678643,
+        "Longitude": -78.951552,
+        "Website Link": null,
+        "Phone": "540-248-3663",
+        "Email": "info@brafb.org",
+        "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/127842",
+        "Place Name": "1653 Thomas Nelson Hwy., Oak Hill Baptist Church, Arrington, VA, 22922"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.951552,
+          37.678643
+        ]
+      }
+    },
+    
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": "127740",
+        "Address": "226 E. Perch Rd., Monroe, VA, 24574",
+        "Latitude": 37.5220922,
+        "Longitude": -79.2282868,
+        "Website Link": "https://chestnutgrovebaptist.org",
+        "Phone": "434-384-9298",
+        "Email": null,
+        "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/127740",
+        "Place Name": "226 E. Perch Rd., Monroe, VA, 24574"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.2282868,
+          37.5220922
+        ]
+      }
+    },
+    
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": "127733",
+        "Address": "2209 Buffalo Springs Tpke., Across the road from the main worship building., Monroe, VA, 24574",
+        "Latitude": 37.610654,
+        "Longitude": -79.239766,
+        "Website Link": "http://www.newprospectbaptistva.org/",
+        "Phone": "434-238-5527",
+        "Email": "newprospectbc@gmail.com",
+        "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/127733",
+        "Place Name": "2209 Buffalo Springs Tpke., Across the road from the main worship building., Monroe, VA, 24574"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.239766,
+          37.610654
+        ]
+      }
+    },
+    
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": "326614",
+        "Address": "243 Jackson Lane, Concord, VA, 24538",
+        "Latitude": 37.4437581,
+        "Longitude": -78.9745961,
+        "Website Link": "https://www.google.com/search?q=http://www.elderlyoutreach.org/",
+        "Phone": "434-238-2638",
+        "Email": null,
+        "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/326614",
+        "Place Name": "243 Jackson Lane, Concord, VA, 24538"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.9745961,
+          37.4437581
+        ]
+      }
+    },
+    
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": "300520",
+        "Address": "2490 Chestnut Grove Church Rd., Appomattox, VA, 24522",
+        "Latitude": 37.245337,
+        "Longitude": -78.780053,
+        "Website Link": null,
+        "Phone": "434-352-0316",
+        "Email": null,
+        "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/300520",
+        "Place Name": "2490 Chestnut Grove Church Rd., Appomattox, VA, 24522"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.780053,
+          37.245337
+        ]
+      }
+    },
+    
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": "127736",
+        "Address": "611 Chestnut Grove Rd., Chestnut Grove Baptist Church, Appomattox, VA, 24522",
+        "Latitude": 37.257533,
+        "Longitude": -78.807721,
+        "Website Link": "https://www.facebook.com/MissionaryFoodBank",
+        "Phone": null,
+        "Email": "sodwheeler@aol.com",
+        "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/127736",
+        "Place Name": "611 Chestnut Grove Rd., Chestnut Grove Baptist Church, Appomattox, VA, 24522"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.807721,
+          37.257533
+        ]
+      }
+    },
+    
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": "326332",
+        "Address": "735 McCulloch Street, Glasgow, VA, 24555",
+        "Latitude": 37.634396,
+        "Longitude": -79.4499952,
+        "Website Link": "https://www.google.com/search?q=https://www.highbridgechurchva.org/natural-bridge-glasgow-food-pantry/",
+        "Phone": "540-291-2578",
+        "Email": null,
+        "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/326332",
+        "Place Name": "735 McCulloch Street, Glasgow, VA, 24555"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.4499952,
+          37.634396
+        ]
+      }
+    },
+    
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": "73946",
+        "Address": "797 Spottswood Rd., Steeles Tavern, VA, 24476",
+        "Latitude": 37.9577424,
+        "Longitude": -79.2166357,
+        "Website Link": null,
+        "Phone": "540-377-5708",
+        "Email": null,
+        "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/73946",
+        "Place Name": "797 Spottswood Rd., Steeles Tavern, VA, 24476"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.2166357,
+          37.9577424
+        ]
+      }
+    },
+    
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": "75645",
+        "Address": "1303 Mt. Zion Rd., Red House, VA, 23963",
+        "Latitude": 37.1793198,
+        "Longitude": -78.8022277,
+        "Website Link": null,
+        "Phone": "434-248-6823",
+        "Email": null,
+        "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/75645",
+        "Place Name": "1303 Mt. Zion Rd., Red House, VA, 23963"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.8022277,
+          37.1793198
+        ]
+      }
+    },
+    
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": "127759",
+        "Address": "12945 W. James Anderson Hwy., Buckingham, VA, 23921",
+        "Latitude": 37.5498491,
+        "Longitude": -78.5578855,
+        "Website Link": null,
+        "Phone": "434-665-6206",
+        "Email": null,
+        "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/127759",
+        "Place Name": "12945 W. James Anderson Hwy., Buckingham, VA, 23921"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.5578855,
+          37.5498491
+        ]
+      }
+    },
+    
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": "31900",
+        "Address": "2523 Craigs Store Rd., Building adjacent to Holy Cross church, Afton, VA, 22920",
+        "Latitude": 37.967426,
+        "Longitude": -78.767201,
+        "Website Link": null,
+        "Phone": "540-456-6334",
+        "Email": "cinki124@gmail.com",
+        "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/31900",
+        "Place Name": "2523 Craigs Store Rd., Building adjacent to Holy Cross church, Afton, VA, 22920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.767201,
+          37.967426
+        ]
+      }
+    },
+    
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": "127874",
+        "Address": "1101 Albemarle Ave., Waynesboro, VA, 22980",
+        "Latitude": 38.051639,
+        "Longitude": -78.903547,
+        "Website Link": "https://www.mmcogic.org/bread-of-heaven",
+        "Phone": "540-221-4172",
+        "Email": null,
+        "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/127874",
+        "Place Name": "1101 Albemarle Ave., Waynesboro, VA, 22980"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.903547,
+          38.051639
+        ]
+      }
+    },
+    
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": "326612",
+        "Address": "2835 Lyndhurst Road, Lyndhurst, VA, 22980",
+        "Latitude": 38.033223,
+        "Longitude": -78.944428,
+        "Website Link": "http://www.lyndhurstumc.com",
+        "Phone": "540-943-8057",
+        "Email": null,
+        "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/326612",
+        "Place Name": "2835 Lyndhurst Drive, Lyndhurst, VA, 22980"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.944428,
+          38.033223
+        ]
+      }
+    },
+    
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": "127748",
+        "Address": "2857 Stuarts Draft Highway, Broadmoor Shopping Center, Stuarts Draft, VA, 24477",
+        "Latitude": 38.045217,
+        "Longitude": -79.037802,
+        "Website Link": "https://www.rejoicinglifechurch.com/content.cfm?id=148&ministry_id=1",
+        "Phone": "540-337-2447",
+        "Email": null,
+        "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/127748",
+        "Place Name": "2857 Stuarts Draft Highway, Broadmoor Shopping Center, Stuarts Draft, VA, 24477"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.037802,
+          38.045217
+        ]
+      }
+    },
+    
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": "73990",
+        "Address": "2179 Stuarts Draft Hwy., Stuarts Draft, VA, 24477",
+        "Latitude": 38.0300636,
+        "Longitude": -79.0558264,
+        "Website Link": "http://www.calvarydraft.com",
+        "Phone": "540-337-2980",
+        "Email": null,
+        "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/73990",
+        "Place Name": "2179 Stuarts Draft Hwy., Stuarts Draft, VA, 24477"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.0558264,
+          38.0300636
+        ]
+      }
+    },
+    
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": "74007",
+        "Address": "Restoration Ministries - VA",
+        "Latitude": 13.1475348,
+        "Longitude": -61.2070557,
+        "Website Link": null,
+        "Phone": "540-942-4544",
+        "Email": null,
+        "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/74007",
+        "Place Name": "Restoration Ministries - VA"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -61.2070557,
+          13.1475348
+        ]
+      }
+    },
+    
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": "327112",
+        "Address": "801 Howardsville Turnpike, Stuarts Draft, VA, 24477",
+        "Latitude": 37.9977024,
+        "Longitude": -79.0036003,
+        "Website Link": null,
+        "Phone": "540-337-2022",
+        "Email": null,
+        "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/327112",
+        "Place Name": "801 Howardsville Turnpike, Stuarts Draft, VA, 24477"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.0036003,
+          37.9977024
+        ]
+      }
+    },
+    
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": "326471",
+        "Address": "401 Florida Ave., Lynchburg, VA, 24504",
+        "Latitude": 37.4050467,
+        "Longitude": -79.1364024,
+        "Website Link": "https://www.google.com/search?q=https://www.facebook.com/White-Rock-Baptist-Church-1531540067095712/",
+        "Phone": "1531540067",
+        "Email": null,
+        "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/326471",
+        "Place Name": "401 Florida Ave., Lynchburg, VA, 24504"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.1364024,
+          37.4050467
+        ]
+      }
+    },
+    
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": "327114",
+        "Address": "1310 Church Street, Lynchburg, VA, 24504",
+        "Latitude": 37.410798,
+        "Longitude": -79.1398029,
+        "Website Link": "https://www.thelhcc.org/",
+        "Phone": "434-847-5050",
+        "Email": null,
+        "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/327114",
+        "Place Name": "1310 Church Street, Lynchburg, VA, 24504"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.1398029,
+          37.410798
+        ]
+      }
+    },
+    
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": "127737",
+        "Address": "329 Main St., Madison Heights, VA, 24572",
+        "Latitude": 37.4216511,
+        "Longitude": -79.1266282,
+        "Website Link": null,
+        "Phone": "434-846-5914",
+        "Email": null,
+        "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/127737",
+        "Place Name": "329 Main St., Madison Heights, VA, 24572"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.1266282,
+          37.4216511
+        ]
+      }
+    },
+    
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": "72660",
+        "Address": "131 Old Colony Rd., Madison Heights, VA, 24572",
+        "Latitude": 37.4201753,
+        "Longitude": -79.1218404,
+        "Website Link": null,
+        "Phone": "434-528-0325",
+        "Email": null,
+        "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/72660",
+        "Place Name": "131 Old Colony Rd., Madison Heights, VA, 24572"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.1218404,
+          37.4201753
+        ]
+      }
+    },
+    
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": "302071",
+        "Address": "5341 S. Amherst Hwy., Madison Heights, VA, 24572",
+        "Latitude": 37.4256382,
+        "Longitude": -79.1303334,
+        "Website Link": null,
+        "Phone": "434-846-3028",
+        "Email": null,
+        "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/302071",
+        "Place Name": "5341 S. Amherst Hwy., Madison Heights, VA, 24572"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.1303334,
+          37.4256382
+        ]
+      }
+    },
+    
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": "127806",
+        "Address": "350 Spotswood Dr., Lexington, VA, 24450",
+        "Latitude": 37.7791848,
+        "Longitude": -79.4431596,
+        "Website Link": "http://www.raralex.org/faq/",
+        "Phone": "540-463-6943",
+        "Email": "office@raralex.org",
+        "URL": "https://foodfinder-prod-dot-foodfinder-183216.uc.r.appspot.com/details/127806",
+        "Place Name": "350 Spotswood Dr., Lexington, VA, 24450"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.4431596,
+          37.7791848
+        ]
+      }
+    }
+  ]
+};
