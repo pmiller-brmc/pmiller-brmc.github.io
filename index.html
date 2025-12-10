@@ -799,7 +799,32 @@ masterLegend.onAdd = function () {
         </div>
 
         <hr style="margin:6px 0;">
+        
+        <!-- Radius Circles -->
+        <div><b>75-Mile Service Radius</b></div>
+        <div style="display:flex;align-items:center;margin-top:4px;">
+            <svg width="16" height="16">
+                <circle cx="8" cy="8" r="7" stroke="red" fill="red" fill-opacity="0.3" />
+            </svg>
+            <span style="margin-left:4px;">BRMC – Appomattox</span>
+        </div>
 
+        <div style="display:flex;align-items:center;margin-top:4px;">
+            <svg width="16" height="16">
+                <circle cx="8" cy="8" r="7" stroke="blue" fill="blue" fill-opacity="0.3" />
+            </svg>
+            <span style="margin-left:4px;">BRMC – Amherst</span>
+        </div>
+
+        <div style="display:flex;align-items:center;margin-top:4px;">
+            <svg width="16" height="16">
+                <circle cx="8" cy="8" r="7" stroke="green" fill="green" fill-opacity="0.3" />
+            </svg>
+            <span style="margin-left:4px;">BRMC – Nelson</span>
+        </div>
+
+        <hr style="margin:6px 0;">
+        
         <!-- Icons -->
         <div><img src="hospital_13298007.png" width="18"> Hospital</div>
         <div><img src="hospital_9707153.png" width="18"> Health Center</div>
@@ -1138,6 +1163,38 @@ setTimeout(() => {
 
   findWorstAccessPointAdaptive(bounds);
 }, 3000);
+
+// 75 miles in meters
+const radius75 = 75 * 1609.34;
+
+const centers = [
+  {
+    name: "BRMC – Appomattox",
+    coords: [37.367437066614997, -78.826973137679005],
+    color: "red"
+  },
+  {
+    name: "BRMC – Amherst",
+    coords: [37.585043395778001, -79.052209277089005],
+    color: "blue"
+  },
+  {
+    name: "BRMC – Nelson / Arrington",
+    coords: [37.707518426884000, -78.934045625657006],
+    color: "green"
+  }
+];
+
+centers.forEach(site => {
+  L.circle(site.coords, {
+    radius: radius75,
+    color: site.color,
+    weight: 2,
+    fillColor: site.color,
+    fillOpacity: 0.01
+  }).addTo(map).bindPopup(site.name + " — 75 mile radius");
+});
+
 
 document.getElementById("addressSubmit").addEventListener("click", () => {
   const address = document.getElementById("addressInput").value.trim();
