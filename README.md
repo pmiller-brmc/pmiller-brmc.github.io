@@ -40,7 +40,8 @@ To run or develop the map locally, follow these steps:
     ```
 3.  **Access the Map:**
     Open your browser and navigate to `http://localhost:8000/index.html` (or the name of your main HTML file).
-
+    
+* Alternatively, you can run the html by opening the html file.
 -----
 
 ## Usage Guide
