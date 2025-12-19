@@ -1,5 +1,5 @@
 var Outreach = {
-"type": "FeatureCollection",
+  "type": "FeatureCollection",
   "name": "Outreach_Clipped",
   "crs": {
     "type": "name",
@@ -11,14 +11,11 @@ var Outreach = {
     {
       "type": "Feature",
       "properties": {
-        "fid": 1,
         "Name": "All Blessings Flow Rural Outreach Medical Supplies Program (Mondays)",
         "description": "All Blessings Flow's mission is to provide used medical equipment and supplies to those in need. Mobile unit coming to a neighborhood near you! Website: www.allblessingsflow.org",
         "Address": "85 Callohill Dr",
         "City": "Lovingston, VA 22949",
-        "Phone": "434-422-8888",
-        "layer": "Region 2",
-        "path": "Region2_GPKG.gpkg|layername=region_2"
+        "Phone": "434-422-8888"
       },
       "geometry": {
         "type": "Point",
@@ -28,18 +25,14 @@ var Outreach = {
         ]
       }
     },
-    
     {
       "type": "Feature",
       "properties": {
-        "fid": 2,
         "Name": "All Blessings Flow Rural Outreach Medical Supplies Program (Tuesdays)",
         "description": "All Blessings Flow's mission is to provide used medical equipment and supplies to those in need. Mobile unit coming to a neighborhood near you! Website: www.allblessingsflow.org",
         "Address": "16980 Oak St",
         "City": "Dillwyn, VA 23936",
-        "Phone": "434-422-8888",
-        "layer": "Region 2",
-        "path": "Region2_GPKG.gpkg|layername=region_2"
+        "Phone": "434-422-8888"
       },
       "geometry": {
         "type": "Point",

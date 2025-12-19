@@ -1,5 +1,5 @@
 var json_Health_Centers_Clipped_7 = {
-"type": "FeatureCollection",
+  "type": "FeatureCollection",
   "name": "Health_Centers_Clipped_7",
   "crs": {
     "type": "name",
@@ -11,7 +11,6 @@ var json_Health_Centers_Clipped_7 = {
     {
       "type": "Feature",
       "properties": {
-        "fid": 1.0,
         "Health Cen": "Nelson County Middle School",
         "Operated B": "BLUE RIDGE HEALTH CENTER INC.",
         "Street Add": "6925 Thomas Nelson Hwy",
@@ -20,28 +19,7 @@ var json_Health_Centers_Clipped_7 = {
         "ZIP Code": "22949-2101",
         "Telephone": "434-263-4801",
         "Website": null,
-        "result_num": "0",
-        "matchedAdd": "6925 THOMAS NELSON HWY, LOVINGSTON, VA, 22949",
-        "tigerLineI": "639828859",
-        "side": "L",
-        "STATEFP": "51",
-        "COUNTYFP": "011",
-        "COUNTYNS": "01497238",
-        "GEOID": "51011",
-        "GEOIDFQ": "0500000US51011",
-        "NAME": "Appomattox",
-        "NAMELSAD": "Appomattox County",
-        "LSAD": "06",
-        "CLASSFP": "H1",
-        "MTFCC": "G4020",
-        "CSAFP": null,
-        "CBSAFP": "31340",
-        "METDIVFP": null,
-        "FUNCSTAT": "A",
-        "ALAND": 865635290.0,
-        "AWATER": 3206454.0,
-        "INTPTLAT": "+37.3707253",
-        "INTPTLON": "-078.8109404"
+        "NAME": "Appomattox"
       },
       "geometry": {
         "type": "MultiPoint",
@@ -53,11 +31,9 @@ var json_Health_Centers_Clipped_7 = {
         ]
       }
     },
-    
     {
       "type": "Feature",
       "properties": {
-        "fid": 4.0,
         "Health Cen": "Nelson County High School",
         "Operated B": "BLUE RIDGE HEALTH CENTER INC.",
         "Street Add": "6919 THOMAS NELSON HWY",
@@ -66,28 +42,7 @@ var json_Health_Centers_Clipped_7 = {
         "ZIP Code": "22949-2101",
         "Telephone": "434-263-6892",
         "Website": "http://www.brmedical.org",
-        "result_num": "0",
-        "matchedAdd": "6919 THOMAS NELSON HWY, LOVINGSTON, VA, 22949",
-        "tigerLineI": "639828859",
-        "side": "L",
-        "STATEFP": "51",
-        "COUNTYFP": "011",
-        "COUNTYNS": "01497238",
-        "GEOID": "51011",
-        "GEOIDFQ": "0500000US51011",
-        "NAME": "Appomattox",
-        "NAMELSAD": "Appomattox County",
-        "LSAD": "06",
-        "CLASSFP": "H1",
-        "MTFCC": "G4020",
-        "CSAFP": null,
-        "CBSAFP": "31340",
-        "METDIVFP": null,
-        "FUNCSTAT": "A",
-        "ALAND": 865635290.0,
-        "AWATER": 3206454.0,
-        "INTPTLAT": "+37.3707253",
-        "INTPTLON": "-078.8109404"
+        "NAME": "Appomattox"
       },
       "geometry": {
         "type": "MultiPoint",
@@ -99,11 +54,9 @@ var json_Health_Centers_Clipped_7 = {
         ]
       }
     },
-    
     {
       "type": "Feature",
       "properties": {
-        "fid": 7.0,
         "Health Cen": "Tye River Elementary School",
         "Operated B": "BLUE RIDGE HEALTH CENTER INC.",
         "Street Add": "5198 Thomas Nelson Hwy",
@@ -112,28 +65,7 @@ var json_Health_Centers_Clipped_7 = {
         "ZIP Code": "22922-2637",
         "Telephone": "434-263-8960",
         "Website": null,
-        "result_num": "0",
-        "matchedAdd": "5198 THOMAS NELSON HWY, ARRINGTON, VA, 22922",
-        "tigerLineI": "98920146",
-        "side": "R",
-        "STATEFP": "51",
-        "COUNTYFP": "011",
-        "COUNTYNS": "01497238",
-        "GEOID": "51011",
-        "GEOIDFQ": "0500000US51011",
-        "NAME": "Appomattox",
-        "NAMELSAD": "Appomattox County",
-        "LSAD": "06",
-        "CLASSFP": "H1",
-        "MTFCC": "G4020",
-        "CSAFP": null,
-        "CBSAFP": "31340",
-        "METDIVFP": null,
-        "FUNCSTAT": "A",
-        "ALAND": 865635290.0,
-        "AWATER": 3206454.0,
-        "INTPTLAT": "+37.3707253",
-        "INTPTLON": "-078.8109404"
+        "NAME": "Appomattox"
       },
       "geometry": {
         "type": "MultiPoint",
@@ -145,11 +77,9 @@ var json_Health_Centers_Clipped_7 = {
         ]
       }
     },
-    
     {
       "type": "Feature",
       "properties": {
-        "fid": 10.0,
         "Health Cen": "MOBILE CLINIC 2",
         "Operated B": "BLUE RIDGE HEALTH CENTER INC.",
         "Street Add": "4038 Thomas Nelson Hwy",
@@ -158,28 +88,7 @@ var json_Health_Centers_Clipped_7 = {
         "ZIP Code": "22922-2302",
         "Telephone": "434-263-4000",
         "Website": null,
-        "result_num": "0",
-        "matchedAdd": "4038 THOMAS NELSON HWY, ARRINGTON, VA, 22922",
-        "tigerLineI": "98920175",
-        "side": "R",
-        "STATEFP": "51",
-        "COUNTYFP": "011",
-        "COUNTYNS": "01497238",
-        "GEOID": "51011",
-        "GEOIDFQ": "0500000US51011",
-        "NAME": "Appomattox",
-        "NAMELSAD": "Appomattox County",
-        "LSAD": "06",
-        "CLASSFP": "H1",
-        "MTFCC": "G4020",
-        "CSAFP": null,
-        "CBSAFP": "31340",
-        "METDIVFP": null,
-        "FUNCSTAT": "A",
-        "ALAND": 865635290.0,
-        "AWATER": 3206454.0,
-        "INTPTLAT": "+37.3707253",
-        "INTPTLON": "-078.8109404"
+        "NAME": "Appomattox"
       },
       "geometry": {
         "type": "MultiPoint",
@@ -191,11 +100,9 @@ var json_Health_Centers_Clipped_7 = {
         ]
       }
     },
-    
     {
       "type": "Feature",
       "properties": {
-        "fid": 13.0,
         "Health Cen": "BLUE RIDGE MEDICAL CENTER, INC.",
         "Operated B": "BLUE RIDGE HEALTH CENTER INC.",
         "Street Add": "4038 Thomas Nelson Hwy",
@@ -204,28 +111,7 @@ var json_Health_Centers_Clipped_7 = {
         "ZIP Code": "22922-2302",
         "Telephone": "434-263-4000",
         "Website": "http://www.brmedical.org",
-        "result_num": "0",
-        "matchedAdd": "4038 THOMAS NELSON HWY, ARRINGTON, VA, 22922",
-        "tigerLineI": "98920175",
-        "side": "R",
-        "STATEFP": "51",
-        "COUNTYFP": "011",
-        "COUNTYNS": "01497238",
-        "GEOID": "51011",
-        "GEOIDFQ": "0500000US51011",
-        "NAME": "Appomattox",
-        "NAMELSAD": "Appomattox County",
-        "LSAD": "06",
-        "CLASSFP": "H1",
-        "MTFCC": "G4020",
-        "CSAFP": null,
-        "CBSAFP": "31340",
-        "METDIVFP": null,
-        "FUNCSTAT": "A",
-        "ALAND": 865635290.0,
-        "AWATER": 3206454.0,
-        "INTPTLAT": "+37.3707253",
-        "INTPTLON": "-078.8109404"
+        "NAME": "Appomattox"
       },
       "geometry": {
         "type": "MultiPoint",
@@ -237,11 +123,9 @@ var json_Health_Centers_Clipped_7 = {
         ]
       }
     },
-    
     {
       "type": "Feature",
       "properties": {
-        "fid": 16.0,
         "Health Cen": "Blue Ridge Dental Center",
         "Operated B": "BLUE RIDGE HEALTH CENTER INC.",
         "Street Add": "4038 Thomas Nelson Hwy Ste B",
@@ -250,28 +134,7 @@ var json_Health_Centers_Clipped_7 = {
         "ZIP Code": "22922-2302",
         "Telephone": "434-263-6310",
         "Website": null,
-        "result_num": "0",
-        "matchedAdd": "4038 THOMAS NELSON HWY, ARRINGTON, VA, 22922",
-        "tigerLineI": "98920175",
-        "side": "R",
-        "STATEFP": "51",
-        "COUNTYFP": "011",
-        "COUNTYNS": "01497238",
-        "GEOID": "51011",
-        "GEOIDFQ": "0500000US51011",
-        "NAME": "Appomattox",
-        "NAMELSAD": "Appomattox County",
-        "LSAD": "06",
-        "CLASSFP": "H1",
-        "MTFCC": "G4020",
-        "CSAFP": null,
-        "CBSAFP": "31340",
-        "METDIVFP": null,
-        "FUNCSTAT": "A",
-        "ALAND": 865635290.0,
-        "AWATER": 3206454.0,
-        "INTPTLAT": "+37.3707253",
-        "INTPTLON": "-078.8109404"
+        "NAME": "Appomattox"
       },
       "geometry": {
         "type": "MultiPoint",
@@ -283,11 +146,9 @@ var json_Health_Centers_Clipped_7 = {
         ]
       }
     },
-    
     {
       "type": "Feature",
       "properties": {
-        "fid": 19.0,
         "Health Cen": "Rockfish River Elementary School",
         "Operated B": "BLUE RIDGE HEALTH CENTER INC.",
         "Street Add": "200 Chapel Hollow Rd",
@@ -296,28 +157,7 @@ var json_Health_Centers_Clipped_7 = {
         "ZIP Code": "22920-3145",
         "Telephone": "434-361-1791",
         "Website": null,
-        "result_num": "0",
-        "matchedAdd": "200 CHAPEL HOLLOW RD, AFTON, VA, 22920",
-        "tigerLineI": "98894611",
-        "side": "R",
-        "STATEFP": "51",
-        "COUNTYFP": "125",
-        "COUNTYNS": "01500936",
-        "GEOID": "51125",
-        "GEOIDFQ": "0500000US51125",
-        "NAME": "Nelson",
-        "NAMELSAD": "Nelson County",
-        "LSAD": "06",
-        "CLASSFP": "H1",
-        "MTFCC": "G4020",
-        "CSAFP": null,
-        "CBSAFP": "16820",
-        "METDIVFP": null,
-        "FUNCSTAT": "A",
-        "ALAND": 1219224535.0,
-        "AWATER": 8983980.0,
-        "INTPTLAT": "+37.7890790",
-        "INTPTLON": "-078.8834401"
+        "NAME": "Nelson"
       },
       "geometry": {
         "type": "MultiPoint",
@@ -329,11 +169,9 @@ var json_Health_Centers_Clipped_7 = {
         ]
       }
     },
-    
     {
       "type": "Feature",
       "properties": {
-        "fid": 21.0,
         "Health Cen": "Blue Ridge Medical Center--Amherst",
         "Operated B": "BLUE RIDGE HEALTH CENTER INC.",
         "Street Add": "210 S Main St",
@@ -342,28 +180,7 @@ var json_Health_Centers_Clipped_7 = {
         "ZIP Code": "24521-2616",
         "Telephone": "434-263-4000",
         "Website": null,
-        "result_num": "0",
-        "matchedAdd": "210 S MAIN ST, AMHERST, VA, 24521",
-        "tigerLineI": "159106810",
-        "side": "L",
-        "STATEFP": "51",
-        "COUNTYFP": "011",
-        "COUNTYNS": "01497238",
-        "GEOID": "51011",
-        "GEOIDFQ": "0500000US51011",
-        "NAME": "Appomattox",
-        "NAMELSAD": "Appomattox County",
-        "LSAD": "06",
-        "CLASSFP": "H1",
-        "MTFCC": "G4020",
-        "CSAFP": null,
-        "CBSAFP": "31340",
-        "METDIVFP": null,
-        "FUNCSTAT": "A",
-        "ALAND": 865635290.0,
-        "AWATER": 3206454.0,
-        "INTPTLAT": "+37.3707253",
-        "INTPTLON": "-078.8109404"
+        "NAME": "Appomattox"
       },
       "geometry": {
         "type": "MultiPoint",
@@ -375,11 +192,9 @@ var json_Health_Centers_Clipped_7 = {
         ]
       }
     },
-    
     {
       "type": "Feature",
       "properties": {
-        "fid": 24.0,
         "Health Cen": "CVHS Southern Albemarle",
         "Operated B": "CENTRAL VIRGINIA HEALTH SERVICES, INC.",
         "Street Add": "2256 IRISH RD",
@@ -388,28 +203,7 @@ var json_Health_Centers_Clipped_7 = {
         "ZIP Code": "22937-1945",
         "Telephone": "434-286-3602",
         "Website": "http://www.cvhsinc.org",
-        "result_num": "0",
-        "matchedAdd": "2256 IRISH RD, ESMONT, VA, 22937",
-        "tigerLineI": "221723278",
-        "side": "R",
-        "STATEFP": "51",
-        "COUNTYFP": "125",
-        "COUNTYNS": "01500936",
-        "GEOID": "51125",
-        "GEOIDFQ": "0500000US51125",
-        "NAME": "Nelson",
-        "NAMELSAD": "Nelson County",
-        "LSAD": "06",
-        "CLASSFP": "H1",
-        "MTFCC": "G4020",
-        "CSAFP": null,
-        "CBSAFP": "16820",
-        "METDIVFP": null,
-        "FUNCSTAT": "A",
-        "ALAND": 1219224535.0,
-        "AWATER": 8983980.0,
-        "INTPTLAT": "+37.7890790",
-        "INTPTLON": "-078.8834401"
+        "NAME": "Nelson"
       },
       "geometry": {
         "type": "MultiPoint",
@@ -421,11 +215,9 @@ var json_Health_Centers_Clipped_7 = {
         ]
       }
     },
-    
     {
       "type": "Feature",
       "properties": {
-        "fid": 25.0,
         "Health Cen": "Amherst County Community Health Center",
         "Operated B": "JOHNSON HEALTH CENTER",
         "Street Add": "109 Clearview Rd",
@@ -434,28 +226,7 @@ var json_Health_Centers_Clipped_7 = {
         "ZIP Code": "24572",
         "Telephone": "434-929-1400",
         "Website": "http://www.jhcvirginia.org/",
-        "result_num": "0",
-        "matchedAdd": "109 CLEARVIEW RD, MADISON HEIGHTS, VA, 24572",
-        "tigerLineI": "159109852",
-        "side": "L",
-        "STATEFP": "51",
-        "COUNTYFP": "011",
-        "COUNTYNS": "01497238",
-        "GEOID": "51011",
-        "GEOIDFQ": "0500000US51011",
-        "NAME": "Appomattox",
-        "NAMELSAD": "Appomattox County",
-        "LSAD": "06",
-        "CLASSFP": "H1",
-        "MTFCC": "G4020",
-        "CSAFP": null,
-        "CBSAFP": "31340",
-        "METDIVFP": null,
-        "FUNCSTAT": "A",
-        "ALAND": 865635290.0,
-        "AWATER": 3206454.0,
-        "INTPTLAT": "+37.3707253",
-        "INTPTLON": "-078.8109404"
+        "NAME": "Appomattox"
       },
       "geometry": {
         "type": "MultiPoint",
@@ -467,11 +238,9 @@ var json_Health_Centers_Clipped_7 = {
         ]
       }
     },
-    
     {
       "type": "Feature",
       "properties": {
-        "fid": 28.0,
         "Health Cen": "Johnson Health Center Community Dental Program",
         "Operated B": "JOHNSON HEALTH CENTER",
         "Street Add": "134 Elon Rd",
@@ -480,28 +249,7 @@ var json_Health_Centers_Clipped_7 = {
         "ZIP Code": "24572-2536",
         "Telephone": "434-929-1400",
         "Website": "http://www.jhcvirginia.org",
-        "result_num": "0",
-        "matchedAdd": "134 ELON RD, MADISON HEIGHTS, VA, 24572",
-        "tigerLineI": "647896470",
-        "side": "L",
-        "STATEFP": "51",
-        "COUNTYFP": "011",
-        "COUNTYNS": "01497238",
-        "GEOID": "51011",
-        "GEOIDFQ": "0500000US51011",
-        "NAME": "Appomattox",
-        "NAMELSAD": "Appomattox County",
-        "LSAD": "06",
-        "CLASSFP": "H1",
-        "MTFCC": "G4020",
-        "CSAFP": null,
-        "CBSAFP": "31340",
-        "METDIVFP": null,
-        "FUNCSTAT": "A",
-        "ALAND": 865635290.0,
-        "AWATER": 3206454.0,
-        "INTPTLAT": "+37.3707253",
-        "INTPTLON": "-078.8109404"
+        "NAME": "Appomattox"
       },
       "geometry": {
         "type": "MultiPoint",
@@ -513,11 +261,9 @@ var json_Health_Centers_Clipped_7 = {
         ]
       }
     },
-    
     {
       "type": "Feature",
       "properties": {
-        "fid": 31.0,
         "Health Cen": "Johnson Health Center Mobile Medical Van 1",
         "Operated B": "JOHNSON HEALTH CENTER",
         "Street Add": "134 Elon Rd",
@@ -526,28 +272,7 @@ var json_Health_Centers_Clipped_7 = {
         "ZIP Code": "24572-2536",
         "Telephone": "434-929-1400",
         "Website": null,
-        "result_num": "0",
-        "matchedAdd": "134 ELON RD, MADISON HEIGHTS, VA, 24572",
-        "tigerLineI": "647896470",
-        "side": "L",
-        "STATEFP": "51",
-        "COUNTYFP": "011",
-        "COUNTYNS": "01497238",
-        "GEOID": "51011",
-        "GEOIDFQ": "0500000US51011",
-        "NAME": "Appomattox",
-        "NAMELSAD": "Appomattox County",
-        "LSAD": "06",
-        "CLASSFP": "H1",
-        "MTFCC": "G4020",
-        "CSAFP": null,
-        "CBSAFP": "31340",
-        "METDIVFP": null,
-        "FUNCSTAT": "A",
-        "ALAND": 865635290.0,
-        "AWATER": 3206454.0,
-        "INTPTLAT": "+37.3707253",
-        "INTPTLON": "-078.8109404"
+        "NAME": "Appomattox"
       },
       "geometry": {
         "type": "MultiPoint",
@@ -559,11 +284,9 @@ var json_Health_Centers_Clipped_7 = {
         ]
       }
     },
-    
     {
       "type": "Feature",
       "properties": {
-        "fid": 34.0,
         "Health Cen": "RAHC - Buena Vista",
         "Operated B": "ROCKBRIDGE AREA FREE CLINIC",
         "Street Add": "2127 Magnolia Ave",
@@ -572,28 +295,7 @@ var json_Health_Centers_Clipped_7 = {
         "ZIP Code": "24416-3111",
         "Telephone": "540-464-8700",
         "Website": null,
-        "result_num": "0",
-        "matchedAdd": "2127 MAGNOLIA AVE, BUENA VISTA, VA, 24416",
-        "tigerLineI": "63113722",
-        "side": "L",
-        "STATEFP": "51",
-        "COUNTYFP": "125",
-        "COUNTYNS": "01500936",
-        "GEOID": "51125",
-        "GEOIDFQ": "0500000US51125",
-        "NAME": "Nelson",
-        "NAMELSAD": "Nelson County",
-        "LSAD": "06",
-        "CLASSFP": "H1",
-        "MTFCC": "G4020",
-        "CSAFP": null,
-        "CBSAFP": "16820",
-        "METDIVFP": null,
-        "FUNCSTAT": "A",
-        "ALAND": 1219224535.0,
-        "AWATER": 8983980.0,
-        "INTPTLAT": "+37.7890790",
-        "INTPTLON": "-078.8834401"
+        "NAME": "Nelson"
       },
       "geometry": {
         "type": "MultiPoint",
@@ -605,11 +307,9 @@ var json_Health_Centers_Clipped_7 = {
         ]
       }
     },
-    
     {
       "type": "Feature",
       "properties": {
-        "fid": 36.0,
         "Health Cen": "Mountain View Family Dentistry",
         "Operated B": "ROCKBRIDGE AREA FREE CLINIC",
         "Street Add": "2131 Magnolia Ave",
@@ -618,28 +318,7 @@ var json_Health_Centers_Clipped_7 = {
         "ZIP Code": "24416-3111",
         "Telephone": "540-464-8700",
         "Website": "http://www.rockahc.org",
-        "result_num": "0",
-        "matchedAdd": "2131 MAGNOLIA AVE, BUENA VISTA, VA, 24416",
-        "tigerLineI": "63113722",
-        "side": "L",
-        "STATEFP": "51",
-        "COUNTYFP": "125",
-        "COUNTYNS": "01500936",
-        "GEOID": "51125",
-        "GEOIDFQ": "0500000US51125",
-        "NAME": "Nelson",
-        "NAMELSAD": "Nelson County",
-        "LSAD": "06",
-        "CLASSFP": "H1",
-        "MTFCC": "G4020",
-        "CSAFP": null,
-        "CBSAFP": "16820",
-        "METDIVFP": null,
-        "FUNCSTAT": "A",
-        "ALAND": 1219224535.0,
-        "AWATER": 8983980.0,
-        "INTPTLAT": "+37.7890790",
-        "INTPTLON": "-078.8834401"
+        "NAME": "Nelson"
       },
       "geometry": {
         "type": "MultiPoint",
@@ -651,11 +330,9 @@ var json_Health_Centers_Clipped_7 = {
         ]
       }
     },
-    
     {
       "type": "Feature",
       "properties": {
-        "fid": 38.0,
         "Health Cen": "CVHS Peterson",
         "Operated B": "CENTRAL VIRGINIA HEALTH SERVICES, INC.",
         "Street Add": "800 Preston Ave",
@@ -664,28 +341,7 @@ var json_Health_Centers_Clipped_7 = {
         "ZIP Code": "22903-4420",
         "Telephone": "434-979-0366",
         "Website": "http://www.cvhsinc.org",
-        "result_num": "0",
-        "matchedAdd": "800 PRESTON AVE, CHARLOTTESVILLE, VA, 22903",
-        "tigerLineI": "83407703",
-        "side": "L",
-        "STATEFP": "51",
-        "COUNTYFP": "125",
-        "COUNTYNS": "01500936",
-        "GEOID": "51125",
-        "GEOIDFQ": "0500000US51125",
-        "NAME": "Nelson",
-        "NAMELSAD": "Nelson County",
-        "LSAD": "06",
-        "CLASSFP": "H1",
-        "MTFCC": "G4020",
-        "CSAFP": null,
-        "CBSAFP": "16820",
-        "METDIVFP": null,
-        "FUNCSTAT": "A",
-        "ALAND": 1219224535.0,
-        "AWATER": 8983980.0,
-        "INTPTLAT": "+37.7890790",
-        "INTPTLON": "-078.8834401"
+        "NAME": "Nelson"
       },
       "geometry": {
         "type": "MultiPoint",
@@ -697,11 +353,9 @@ var json_Health_Centers_Clipped_7 = {
         ]
       }
     },
-    
     {
       "type": "Feature",
       "properties": {
-        "fid": 39.0,
         "Health Cen": "Rockbridge Area Health Center",
         "Operated B": "ROCKBRIDGE AREA FREE CLINIC",
         "Street Add": "25 Northridge Ln",
@@ -710,28 +364,7 @@ var json_Health_Centers_Clipped_7 = {
         "ZIP Code": "24450-3399",
         "Telephone": "540-464-8700",
         "Website": "http://rockahc.org",
-        "result_num": "0",
-        "matchedAdd": "25 NORTHRIDGE LN, LEXINGTON, VA, 24450",
-        "tigerLineI": "63129361",
-        "side": "L",
-        "STATEFP": "51",
-        "COUNTYFP": "125",
-        "COUNTYNS": "01500936",
-        "GEOID": "51125",
-        "GEOIDFQ": "0500000US51125",
-        "NAME": "Nelson",
-        "NAMELSAD": "Nelson County",
-        "LSAD": "06",
-        "CLASSFP": "H1",
-        "MTFCC": "G4020",
-        "CSAFP": null,
-        "CBSAFP": "16820",
-        "METDIVFP": null,
-        "FUNCSTAT": "A",
-        "ALAND": 1219224535.0,
-        "AWATER": 8983980.0,
-        "INTPTLAT": "+37.7890790",
-        "INTPTLON": "-078.8834401"
+        "NAME": "Nelson"
       },
       "geometry": {
         "type": "MultiPoint",
@@ -743,11 +376,9 @@ var json_Health_Centers_Clipped_7 = {
         ]
       }
     },
-    
     {
       "type": "Feature",
       "properties": {
-        "fid": 41.0,
         "Health Cen": "Mobile Medical Unit #1",
         "Operated B": "ROCKBRIDGE AREA FREE CLINIC",
         "Street Add": "25 Northridge Ln",
@@ -756,28 +387,7 @@ var json_Health_Centers_Clipped_7 = {
         "ZIP Code": "24450-3399",
         "Telephone": "540-464-8700 x7111",
         "Website": "http://www.rockahc.org",
-        "result_num": "0",
-        "matchedAdd": "25 NORTHRIDGE LN, LEXINGTON, VA, 24450",
-        "tigerLineI": "63129361",
-        "side": "L",
-        "STATEFP": "51",
-        "COUNTYFP": "125",
-        "COUNTYNS": "01500936",
-        "GEOID": "51125",
-        "GEOIDFQ": "0500000US51125",
-        "NAME": "Nelson",
-        "NAMELSAD": "Nelson County",
-        "LSAD": "06",
-        "CLASSFP": "H1",
-        "MTFCC": "G4020",
-        "CSAFP": null,
-        "CBSAFP": "16820",
-        "METDIVFP": null,
-        "FUNCSTAT": "A",
-        "ALAND": 1219224535.0,
-        "AWATER": 8983980.0,
-        "INTPTLAT": "+37.7890790",
-        "INTPTLON": "-078.8834401"
+        "NAME": "Nelson"
       },
       "geometry": {
         "type": "MultiPoint",
@@ -789,11 +399,9 @@ var json_Health_Centers_Clipped_7 = {
         ]
       }
     },
-    
     {
       "type": "Feature",
       "properties": {
-        "fid": 43.0,
         "Health Cen": "RAHC Mobile Dental Unit",
         "Operated B": "ROCKBRIDGE AREA FREE CLINIC",
         "Street Add": "25 Northridge Ln",
@@ -802,28 +410,7 @@ var json_Health_Centers_Clipped_7 = {
         "ZIP Code": "24450-3399",
         "Telephone": "540-464-8700",
         "Website": null,
-        "result_num": "0",
-        "matchedAdd": "25 NORTHRIDGE LN, LEXINGTON, VA, 24450",
-        "tigerLineI": "63129361",
-        "side": "L",
-        "STATEFP": "51",
-        "COUNTYFP": "125",
-        "COUNTYNS": "01500936",
-        "GEOID": "51125",
-        "GEOIDFQ": "0500000US51125",
-        "NAME": "Nelson",
-        "NAMELSAD": "Nelson County",
-        "LSAD": "06",
-        "CLASSFP": "H1",
-        "MTFCC": "G4020",
-        "CSAFP": null,
-        "CBSAFP": "16820",
-        "METDIVFP": null,
-        "FUNCSTAT": "A",
-        "ALAND": 1219224535.0,
-        "AWATER": 8983980.0,
-        "INTPTLAT": "+37.7890790",
-        "INTPTLON": "-078.8834401"
+        "NAME": "Nelson"
       },
       "geometry": {
         "type": "MultiPoint",
@@ -835,11 +422,9 @@ var json_Health_Centers_Clipped_7 = {
         ]
       }
     },
-    
     {
       "type": "Feature",
       "properties": {
-        "fid": 45.0,
         "Health Cen": "Blue Ridge Medical Center-Appomattox",
         "Operated B": "BLUE RIDGE HEALTH CENTER INC.",
         "Street Add": "624 Jones St",
@@ -848,28 +433,7 @@ var json_Health_Centers_Clipped_7 = {
         "ZIP Code": "24522-4031",
         "Telephone": "434-263-4000",
         "Website": null,
-        "result_num": "0",
-        "matchedAdd": "624 JONES ST, APPOMATTOX, VA, 24522",
-        "tigerLineI": "197936343",
-        "side": "R",
-        "STATEFP": "51",
-        "COUNTYFP": "011",
-        "COUNTYNS": "01497238",
-        "GEOID": "51011",
-        "GEOIDFQ": "0500000US51011",
-        "NAME": "Appomattox",
-        "NAMELSAD": "Appomattox County",
-        "LSAD": "06",
-        "CLASSFP": "H1",
-        "MTFCC": "G4020",
-        "CSAFP": null,
-        "CBSAFP": "31340",
-        "METDIVFP": null,
-        "FUNCSTAT": "A",
-        "ALAND": 865635290.0,
-        "AWATER": 3206454.0,
-        "INTPTLAT": "+37.3707253",
-        "INTPTLON": "-078.8109404"
+        "NAME": "Appomattox"
       },
       "geometry": {
         "type": "MultiPoint",
@@ -881,11 +445,9 @@ var json_Health_Centers_Clipped_7 = {
         ]
       }
     },
-    
     {
       "type": "Feature",
       "properties": {
-        "fid": 48.0,
         "Health Cen": "Rockbridge County High School Health Center",
         "Operated B": "ROCKBRIDGE AREA FREE CLINIC",
         "Street Add": "143 Greenhouse Rd",
@@ -894,28 +456,7 @@ var json_Health_Centers_Clipped_7 = {
         "ZIP Code": "24450-3718",
         "Telephone": "540-464-8700",
         "Website": null,
-        "result_num": "0",
-        "matchedAdd": "143 GREENHOUSE RD, LEXINGTON, VA, 24450",
-        "tigerLineI": "63129247",
-        "side": "R",
-        "STATEFP": "51",
-        "COUNTYFP": "125",
-        "COUNTYNS": "01500936",
-        "GEOID": "51125",
-        "GEOIDFQ": "0500000US51125",
-        "NAME": "Nelson",
-        "NAMELSAD": "Nelson County",
-        "LSAD": "06",
-        "CLASSFP": "H1",
-        "MTFCC": "G4020",
-        "CSAFP": null,
-        "CBSAFP": "16820",
-        "METDIVFP": null,
-        "FUNCSTAT": "A",
-        "ALAND": 1219224535.0,
-        "AWATER": 8983980.0,
-        "INTPTLAT": "+37.7890790",
-        "INTPTLON": "-078.8834401"
+        "NAME": "Nelson"
       },
       "geometry": {
         "type": "MultiPoint",
@@ -927,11 +468,9 @@ var json_Health_Centers_Clipped_7 = {
         ]
       }
     },
-    
     {
       "type": "Feature",
       "properties": {
-        "fid": 50.0,
         "Health Cen": "JOHNSON HEALTH CENTER",
         "Operated B": "JOHNSON HEALTH CENTER",
         "Street Add": "320 Federal St",
@@ -940,28 +479,7 @@ var json_Health_Centers_Clipped_7 = {
         "ZIP Code": "24504-2306",
         "Telephone": "434-947-5967",
         "Website": null,
-        "result_num": "0",
-        "matchedAdd": "320 FEDERAL ST, LYNCHBURG, VA, 24504",
-        "tigerLineI": "62626554",
-        "side": "L",
-        "STATEFP": "51",
-        "COUNTYFP": "011",
-        "COUNTYNS": "01497238",
-        "GEOID": "51011",
-        "GEOIDFQ": "0500000US51011",
-        "NAME": "Appomattox",
-        "NAMELSAD": "Appomattox County",
-        "LSAD": "06",
-        "CLASSFP": "H1",
-        "MTFCC": "G4020",
-        "CSAFP": null,
-        "CBSAFP": "31340",
-        "METDIVFP": null,
-        "FUNCSTAT": "A",
-        "ALAND": 865635290.0,
-        "AWATER": 3206454.0,
-        "INTPTLAT": "+37.3707253",
-        "INTPTLON": "-078.8109404"
+        "NAME": "Appomattox"
       },
       "geometry": {
         "type": "MultiPoint",
@@ -973,11 +491,9 @@ var json_Health_Centers_Clipped_7 = {
         ]
       }
     },
-    
     {
       "type": "Feature",
       "properties": {
-        "fid": 53.0,
         "Health Cen": "5th Street Community Health Center",
         "Operated B": "COMMUNITY ACCESS NETWORK INC",
         "Street Add": "800 5th St Ste A",
@@ -986,28 +502,7 @@ var json_Health_Centers_Clipped_7 = {
         "ZIP Code": "24504-2848",
         "Telephone": "434-200-3366",
         "Website": "http://www.communityaccessnetwork.org",
-        "result_num": "0",
-        "matchedAdd": "800 5TH ST, LYNCHBURG, VA, 24504",
-        "tigerLineI": "62626571",
-        "side": "L",
-        "STATEFP": "51",
-        "COUNTYFP": "011",
-        "COUNTYNS": "01497238",
-        "GEOID": "51011",
-        "GEOIDFQ": "0500000US51011",
-        "NAME": "Appomattox",
-        "NAMELSAD": "Appomattox County",
-        "LSAD": "06",
-        "CLASSFP": "H1",
-        "MTFCC": "G4020",
-        "CSAFP": null,
-        "CBSAFP": "31340",
-        "METDIVFP": null,
-        "FUNCSTAT": "A",
-        "ALAND": 865635290.0,
-        "AWATER": 3206454.0,
-        "INTPTLAT": "+37.3707253",
-        "INTPTLON": "-078.8109404"
+        "NAME": "Appomattox"
       },
       "geometry": {
         "type": "MultiPoint",
