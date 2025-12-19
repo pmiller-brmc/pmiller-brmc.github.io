@@ -474,9 +474,9 @@ var json_foodfinder_locations_8 = {
       "type": "Feature",
       "properties": {
         "ID": "74007",
-        "Address": "Restoration Ministries - VA",
-        "Latitude": 13.1475348,
-        "Longitude": -61.2070557,
+        "Address": "3554 West Old Mountain Road , Louisa, VA, United States, Virginia",
+        "Latitude": 37.1232245,
+        "Longitude": -78.4927721,
         "Website Link": null,
         "Phone": "540-942-4544",
         "Email": null,
@@ -486,8 +486,8 @@ var json_foodfinder_locations_8 = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -61.2070557,
-          13.1475348
+          -78.4927721,
+          37.1232245
         ]
       }
     },
